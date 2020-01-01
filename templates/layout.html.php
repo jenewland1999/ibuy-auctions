@@ -8,8 +8,17 @@
     <!-- Page Title -->
     <title>iBuy Auctions</title>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/public/stylesheets/lib/bootstrap-4.4.1.min.css" />
+
     <!-- iBuy CSS -->
     <link rel="stylesheet" href="/public/stylesheets/ibuy.css" />
+
+    <!-- Bootstrap CSS -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script async defer src="/public/scripts/lib/jquery-3.4.1.slim.min.js"></script>
+    <script async defer src="/public/scripts/lib/popper-1.16.0.min.js"></script>
+    <script async defer src="/public/scripts/lib/bootstrap-4.4.1.min.js"></script>
 
     <!-- iBuy JS -->
     <script async defer src="/public/scripts/ibuy.js"></script>
