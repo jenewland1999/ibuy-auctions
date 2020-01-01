@@ -1,0 +1,215 @@
+.ibuy {
+  background-color: #f6f5f4;
+  font-family: "Oxygen", sans-serif;
+  line-height: normal;
+}
+
+.ibuy__header {
+  align-items: center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0.75em 0;
+}
+
+.ibuy__brand {
+  display: block;
+}
+
+.ibuy__brand:hover {
+  text-decoration: none;
+}
+
+.ibuy__brand h1 {
+  font-family: serif;
+  font-size: 5rem;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+}
+
+.ibuy__brand #i {
+  color: #e43137;
+}
+
+.ibuy__brand #b {
+  color: #0063d1;
+}
+
+.ibuy__brand #u {
+  color: #f4ae01;
+}
+
+.ibuy__brand #y {
+  color: #85b716;
+}
+
+.ibuy__form {
+}
+
+.ibuy__form input {
+  font-size: 2rem;
+  width: 100%;
+  border: 3px solid transparent;
+  padding: 0.5em;
+}
+
+.ibuy__form input[type="text"] {
+  border-color: #000000;
+  width: 70%;
+}
+
+.ibuy__form input[type="submit"] {
+  border-color: #3665f3;
+  background-color: #3665f3;
+  color: #ffffff;
+  width: 20%;
+}
+
+.ibuy__navbar {
+  position: relative;
+}
+
+.ibuy__navbar--general {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ibuy__navbar--categories {
+  border-bottom: 1px solid #ddd;
+}
+
+.ibuy__navbar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0 1em;
+}
+
+.ibuy__navbar--general .ibuy__navbar-nav {
+  align-items: center;
+  display: flex;
+}
+
+.ibuy__navbar--categories .ibuy__navbar-nav {
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1em;
+}
+
+.ibuy__nav-item {
+}
+
+.ibuy__nav-link,
+.ibuy__nav-link:link,
+.ibuy__nav-link:visited {
+  display: block;
+  color: #444;
+  line-height: normal;
+}
+
+.ibuy__nav-link:hover,
+.ibuy__nav-link:focus {
+  color: #444;
+  text-decoration: underline;
+}
+
+.ibuy__navbar--general .ibuy__nav-link,
+.ibuy__navbar--general .ibuy__nav-link:link,
+.ibuy__navbar--general .ibuy__nav-link:visited {
+  padding: 0.5em;
+  text-align: left;
+}
+
+.ibuy__navbar--categories .ibuy__nav-link,
+.ibuy__navbar--categories .ibuy__nav-link:link,
+.ibuy__navbar--categories .ibuy__nav-link:visited {
+  font-size: 1.5rem;
+  padding: 0.25em 0;
+  text-align: center;
+}
+
+.ibuy__nav-dropdown {
+}
+
+.ibuy__navbar--general .ibuy__nav-dropdown {
+  background-color: #333;
+  padding: 0 1rem;
+}
+
+.ibuy__navbar--general .ibuy__nav-dropdown:focus,
+.ibuy__navbar--general .ibuy__nav-dropdown:hover {
+  background-color: #444;
+}
+
+.ibuy__nav-dropdown-toggle {
+}
+
+.ibuy__navbar--general .ibuy__nav-dropdown-toggle,
+.ibuy__navbar--general .ibuy__nav-dropdown-toggle:link,
+.ibuy__navbar--general .ibuy__nav-dropdown-toggle:visited {
+  color: #ffffff;
+}
+
+.ibuy__navbar--general .ibuy__nav-dropdown-toggle:after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.ibuy__nav-dropdown-menu {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 0.25em 1em 0.5em;
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+}
+
+.ibuy__navbar--general .ibuy__nav-dropdown-menu {
+  align-items: flex-start;
+  background-color: #333;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  border-top: 1px solid #444;
+  flex-direction: column;
+  left: 1em;
+}
+
+.ibuy__navbar--categories .ibuy__nav-dropdown-menu {
+  background-color: #f6f5f4;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  left: 0;
+  right: 0;
+}
+
+.ibuy__navbar--general .ibuy__nav-dropdown-menu .ibuy__nav-link {
+  color: #fff;
+}
+
+.ibuy__navbar--categories #navDropdownCategorise {
+  display: none;
+}
+
+.ibuy__navbar--categories
+  #navDropdownCategorise.ibuy__nav-dropdown-menu--shown {
+  display: grid;
+}
+
+.ibuy__navbar--general #navDropdownGeneral {
+  display: none;
+}
+
+.ibuy__navbar--general #navDropdownGeneral.ibuy__nav-dropdown-menu--shown {
+  display: flex;
+}
+
+.ibuy__nav-dropdown-item {
+}
