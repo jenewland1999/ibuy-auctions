@@ -13,6 +13,21 @@ function getAuctions($pdo) {
   return $stmt->fetchAll();
 }
 
+// Retrieve all auctions created by a particular user from the DB
+function getAuctionsByUser($pdo, $user_id) {
+  $stmt = $pdo->prepare('
+    SELECT `auction_id`, `auction_name`, `auction_description`, `auction_timestamp`, `category_id`, `user_id`, `start_date`, `end_date`, `approved`, `finished`, `start_price`, `buy_price`
+    FROM `auctions`
+    WHERE `user_id` = :user_id
+    ORDER BY `auction_timestamp` 
+    DESC
+  ');
+  $stmt->execute([
+    'user_id' => $user_id
+  ]);
+  return $stmt->fetchAll();
+}
+
 // Retrieves all auctions from the DB that:
 // have started, haven't ended, are approved and haven't finished.
 function getAuctionsRestricted($pdo) {
@@ -276,6 +291,32 @@ function getReviews($pdo) {
     FROM `reviews`
   ');
   $stmt->execute();
+  return $stmt->fetchAll();
+}
+
+// Retrieve all reviews by a particular user from the DB
+function getReviewsByUser($pdo, $user_id) {
+  $stmt = $pdo->prepare('
+    SELECT `review_id`, `review_text`, `review_timestamp`, `review_user`, `user_id`
+    FROM `reviews`
+    WHERE `user_id` = :user_id
+  ');
+  $stmt->execute([
+    'user_id' => $user_id
+  ]);
+  return $stmt->fetchAll();
+}
+
+// Retrieve all reviews for a particular user from the DB
+function getReviewsForUser($pdo, $review_user) {
+  $stmt = $pdo->prepare('
+    SELECT `review_id`, `review_text`, `review_timestamp`, `review_user`, `user_id`
+    FROM `reviews`
+    WHERE `review_user` = :review_user
+  ');
+  $stmt->execute([
+    'review_user' => $review_user
+  ]);
   return $stmt->fetchAll();
 }
 
