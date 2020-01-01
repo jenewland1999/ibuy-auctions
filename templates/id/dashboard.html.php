@@ -97,20 +97,44 @@
       </div> <!-- /Auctions Listing -->
     </section>
 
-    <!-- REVIEWS -->
+    <!-- REVIEWS RECEIVED -->
     <section>
-      <h2 class="section__heading">My Reviews</h2>
+      <h2 class="section__heading">My Reviews (Received)</h2>
       <hr class="section__rule my-3" />
 
       <!-- Reviews Listing -->
       <div class="row">
         <div class="col-12">
           <ul class="list-group">
-            <?php foreach($reviews as $review): ?>
-              <?php $user = getUserFromFK($pdo, $review['review_user']); ?>
+            <?php foreach($reviewsReceived as $review): ?>
+              <?php $user = getUser($pdo, $review['user_id']); ?>
               <li class="list-group-item">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1"><?= $user['first_name'] . ' ' . $user['last_name']; ?> said...</h5>
+                  <small><?= $review['review_timestamp']; ?></small>
+                </div>
+                <p class="mb-1"><?= $review['review_text']; ?></p>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      </div> <!-- /Reviews Listing -->
+    </section>
+
+    <!-- REVIEWS RECEIVED -->
+    <section>
+      <h2 class="section__heading">My Reviews (Given)</h2>
+      <hr class="section__rule my-3" />
+
+      <!-- Reviews Listing -->
+      <div class="row">
+        <div class="col-12">
+          <ul class="list-group">
+            <?php foreach($reviewsGiven as $review): ?>
+              <?php $user = getUser($pdo, $review['review_user']); ?>
+              <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">I reviewed <?= $user['first_name'] . ' ' . $user['last_name']; ?> saying...</h5>
                   <small><?= $review['review_timestamp']; ?></small>
                 </div>
                 <p class="mb-1"><?= $review['review_text']; ?></p>

@@ -18,7 +18,10 @@ try {
   $user = getUser($pdo, $_SESSION['uuid']);
 
   // Get all the reviews for the user
-  $reviews = getReviewsByUser($pdo, $_SESSION['uuid']);
+  $reviewsReceived = getReviewsForUser($pdo, $_SESSION['uuid']);
+
+  // Get all the reviews for the user
+  $reviewsGiven = getReviewsByUser($pdo, $_SESSION['uuid']);
 
   // Get all the auctions for the user
   $auctions = getAuctionsByUser($pdo, $_SESSION['uuid']);
