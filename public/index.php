@@ -10,7 +10,7 @@ try {
   // Include the database connection (Initialises the $pdo variable)
   include_once __DIR__ . '/../includes/DatabaseConnection.php';
 
-  // Get the 10 most recently created auctions that:
+  // Retrieve the 10 most recently created auctions that:
   // have started, haven't ended, are approved and haven't finished
   $auctions = array_slice(getAuctionsRestricted($pdo), 0, 10, true);
 
