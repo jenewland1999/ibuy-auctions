@@ -11,6 +11,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/public/stylesheets/lib/bootstrap-4.4.1.min.css" />
 
+    <!-- Font (Oxygen Regular) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" />
+
     <!-- iBuy CSS -->
     <link rel="stylesheet" href="/public/stylesheets/ibuy.css" />
 
