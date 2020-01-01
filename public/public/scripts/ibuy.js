@@ -2,29 +2,37 @@
   // Cache the DOM
   const DOM = document;
 
-  // Store the Navbar elements
-  const NAVBAR_GENERAL_DROPDOWN_BTN = DOM.querySelector(
-    "#navbarDropdownToggleGeneral"
-  );
-  const NAVBAR_GENERAL_DROPDOWN = DOM.querySelector("#navbarDropdownGeneral");
+  // Check if the admin part of the nav exists
+  if (DOM.querySelector("#navbarDropdownToggleGeneral") !== null) {
+    // Store the Navbar elements
+    const NAVBAR_GENERAL_DROPDOWN_BTN = DOM.querySelector(
+      "#navbarDropdownToggleGeneral"
+    );
+    const NAVBAR_GENERAL_DROPDOWN = DOM.querySelector("#navbarDropdownGeneral");
 
-  // Event listener for Navbar button
-  NAVBAR_GENERAL_DROPDOWN_BTN.addEventListener("click", e => {
-    e.preventDefault();
-    NAVBAR_GENERAL_DROPDOWN.classList.toggle("ibuy__nav-dropdown-menu--shown");
-  });
+    // Event listener for Navbar button
+    NAVBAR_GENERAL_DROPDOWN_BTN.addEventListener("click", e => {
+      e.preventDefault();
+      NAVBAR_GENERAL_DROPDOWN.classList.toggle(
+        "ibuy__nav-dropdown-menu--shown"
+      );
+    });
+  }
 
-  // Store the Navbar elements
-  const NAVBAR_CAT_DROPDOWN_BTN = DOM.querySelector(
-    "#navbarDropdownToggleCategories"
-  );
-  const NAVBAR_CAT_DROPDOWN = DOM.querySelector("#navbarDropdownCategories");
+  // Check if the more categories part of the nav exists
+  if (DOM.querySelector("#navbarDropdownToggleCategories") !== null) {
+    // Store the Navbar elements
+    const NAVBAR_CAT_DROPDOWN_BTN = DOM.querySelector(
+      "#navbarDropdownToggleCategories"
+    );
+    const NAVBAR_CAT_DROPDOWN = DOM.querySelector("#navbarDropdownCategories");
 
-  // Event listener for Navbar button
-  NAVBAR_CAT_DROPDOWN_BTN.addEventListener("click", e => {
-    e.preventDefault();
-    NAVBAR_CAT_DROPDOWN.classList.toggle("ibuy__nav-dropdown-menu--shown");
-  });
+    // Event listener for Navbar button
+    NAVBAR_CAT_DROPDOWN_BTN.addEventListener("click", e => {
+      e.preventDefault();
+      NAVBAR_CAT_DROPDOWN.classList.toggle("ibuy__nav-dropdown-menu--shown");
+    });
+  }
 
   // Check if user is in the auctions page
   if (
