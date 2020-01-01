@@ -401,6 +401,19 @@ function getUser($pdo, $user_id) {
   return $stmt->fetch();
 }
 
+// Retrieve the user with the matching user_email from the DB
+function getUserByEmail($pdo, $user_email) {
+  $stmt = $pdo->prepare('
+    SELECT `user_id`, `user_email`, `user_pwd`, `first_name`, `last_name`, `is_admin`
+    FROM `users`
+    WHERE `user_email` = :user_email
+  ');
+  $stmt->execute([
+    'user_email' => $user_email
+  ]);
+  return $stmt->fetch();
+}
+
 // Delete one and only one user with the matching user_id from the DB
 function deleteUser($pdo, $user_id) {
   $stmt = $pdo->prepare('
