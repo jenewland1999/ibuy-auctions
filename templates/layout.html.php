@@ -81,9 +81,11 @@
       <?= $output; ?>
     </main>
     <footer class="ibuy__footer">
-      <p class="ibuy__copyright">
-        Copyright &copy; <?= date('Y'); ?> iBuy Auctions
-      </p>
+      <div class="container">
+        <p class="ibuy__copyright text-muted my-5">
+          Copyright &copy; <?= date('Y'); ?> iBuy Auctions
+        </p>
+      </div>
     </footer>
   </body>
 </html>
