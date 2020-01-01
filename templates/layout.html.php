@@ -109,8 +109,8 @@ try {
         <?php endforeach; ?>
         <?php if(isset($categoriesMore)): ?>
           <li class="ibuy__nav-item ibuy__nav-dropdown">
-            <a class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navbarCatDropdownToggle" href="#">More...</a>
-            <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navbarCatDropdown">
+            <a class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navbarDropdownToggleCategories" href="#">More...</a>
+            <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navbarDropdownCategories">
               <?php foreach($categoriesMore as $category): ?>
                 <li class="ibuy__nav-item"><a href="/auctions/index.php?cat=<?= $category['category_slug']; ?>" class="ibuy__nav-link"><?= $category['category_name']; ?></a></li>
               <?php endforeach; ?>
