@@ -194,20 +194,20 @@
   color: #fff;
 }
 
-.ibuy__navbar--categories #navDropdownCategorise {
+.ibuy__navbar--categories #navbarDropdownCategories {
   display: none;
 }
 
 .ibuy__navbar--categories
-  #navDropdownCategorise.ibuy__nav-dropdown-menu--shown {
+  #navbarDropdownCategories.ibuy__nav-dropdown-menu--shown {
   display: grid;
 }
 
-.ibuy__navbar--general #navDropdownGeneral {
+.ibuy__navbar--general #navbarDropdownGeneral {
   display: none;
 }
 
-.ibuy__navbar--general #navDropdownGeneral.ibuy__nav-dropdown-menu--shown {
+.ibuy__navbar--general #navbarDropdownGeneral.ibuy__nav-dropdown-menu--shown {
   display: flex;
 }
 

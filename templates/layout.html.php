@@ -30,8 +30,8 @@
     <nav class="ibuy__navbar ibuy__navbar--general">
       <ul class="ibuy__navbar-nav">
         <li class="ibuy__nav-item ibuy__nav-dropdown">
-          <a href="#" class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navDropdownToggleGeneral">Admin</a>
-          <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navDropdownGeneral">
+          <a href="#" class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navbarDropdownToggleGeneral">Admin</a>
+          <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navbarDropdownGeneral">
             <li class="ibuy__nav-item"><a href="/admin/auctions/" class="ibuy__nav-link">Auctions</a></li>
             <li class="ibuy__nav-item"><a href="/admin/categories/" class="ibuy__nav-link">Categories</a></li>
             <li class="ibuy__nav-item"><a href="/admin/reviews/" class="ibuy__nav-link">Reviews</a></li>
@@ -66,8 +66,8 @@
         <li class="ibuy__nav-item"><a href="/auctions?cat=toys" class="ibuy__nav-link">Toys</a></li>
         <li class="ibuy__nav-item"><a href="/auctions?cat=motors" class="ibuy__nav-link">Motors</a></li>
         <li class="ibuy__nav-item ibuy__nav-dropdown">
-          <a href="#" class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navDropdownToggleCategories">More...</a>
-          <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navDropdownCategories">
+          <a href="#" class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navbarDropdownToggleCategories">More...</a>
+          <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navbarDropdownCategories">
             <li class="ibuy__nav-item"><a href="/auctions?cat=video-games" class="ibuy__nav-link">Video Games</a></li>
           </ul>
         </li>
