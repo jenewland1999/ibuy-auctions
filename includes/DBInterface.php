@@ -6,6 +6,8 @@ function getAuctions($pdo) {
   $stmt = $pdo->prepare('
     SELECT `auction_id`, `auction_name`, `auction_description`, `auction_timestamp`, `category_id`, `user_id`, `start_date`, `end_date`, `approved`, `finished`, `start_price`, `buy_price`
     FROM `auctions`
+    ORDER BY `auction_timestamp` 
+    DESC
   ');
   $stmt->execute();
   return $stmt->fetchAll();
@@ -21,6 +23,8 @@ function getAuctionsRestricted($pdo) {
     AND `finished` = FALSE 
     AND `end_date` > SYSDATE() 
     AND `start_date` <= SYSDATE()
+    ORDER BY `auction_timestamp` 
+    DESC
   ');
   $stmt->execute();
   return $stmt->fetchAll();
@@ -38,6 +42,8 @@ function getAuctionsByCatRestricted($pdo, $category_id) {
     AND `end_date` > SYSDATE() 
     AND `start_date` <= SYSDATE()
     AND `category_id` = :category_id
+    ORDER BY `auction_timestamp` 
+    DESC
   ');
   $stmt->execute([
     'category_id' => $category_id
@@ -57,6 +63,8 @@ function getAuctionsByNameRestricted($pdo, $auction_name) {
     AND `end_date` > SYSDATE() 
     AND `start_date` <= SYSDATE() 
     AND `auction_name` LIKE :auction_name
+    ORDER BY `auction_timestamp` 
+    DESC
   ');
   $stmt->execute([
     'auction_name' => '%' . $auction_name . '%'
@@ -77,6 +85,8 @@ function getAuctionsByNameAndCatRestricted($pdo, $auction_name, $category_id) {
     AND `start_date` <= SYSDATE() 
     AND `auction_name` LIKE :auction_name 
     AND `category_id` = :category_id
+    ORDER BY `auction_timestamp` 
+    DESC
   ');
   $stmt->execute([
     'auction_name' => '%' . $auction_name . '%',
