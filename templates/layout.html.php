@@ -77,7 +77,7 @@
       <img src="/public/images/random-banner.php" alt="" />
       <figcaption></figcaption>
     </figure>
-    <main class="ibuy__main">
+    <main class="ibuy__main container">
       <?= $output; ?>
     </main>
     <footer class="ibuy__footer">
