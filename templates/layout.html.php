@@ -31,7 +31,7 @@
       <ul class="ibuy__navbar-nav">
         <li class="ibuy__nav-item ibuy__nav-dropdown">
           <a href="#" class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navDropdownToggleGeneral">Admin</a>
-          <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu">
+          <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navDropdownGeneral">
             <li class="ibuy__nav-item"><a href="/admin/auctions/" class="ibuy__nav-link">Auctions</a></li>
             <li class="ibuy__nav-item"><a href="/admin/categories/" class="ibuy__nav-link">Categories</a></li>
             <li class="ibuy__nav-item"><a href="/admin/reviews/" class="ibuy__nav-link">Reviews</a></li>
@@ -67,7 +67,7 @@
         <li class="ibuy__nav-item"><a href="/auctions?cat=motors" class="ibuy__nav-link">Motors</a></li>
         <li class="ibuy__nav-item ibuy__nav-dropdown">
           <a href="#" class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navDropdownToggleCategories">More...</a>
-          <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu">
+          <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navDropdownCategories">
             <li class="ibuy__nav-item"><a href="/auctions?cat=video-games" class="ibuy__nav-link">Video Games</a></li>
           </ul>
         </li>
