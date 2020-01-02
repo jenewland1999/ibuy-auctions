@@ -6,7 +6,7 @@
     <p class="lead mb-5">
       You have successfully been logged out. If you are not automatically redirected please click the button below to login again or return to the homepage.
     </p>
-    <a href="/" class="btn btn-block btn-primary">Login Again</a>
+    <a href="/id/login.php" class="btn btn-block btn-primary">Login Again</a>
     <a href="/" class="btn btn-block btn-secondary">Return to Homepage</a>
   </div>
 </div>
