@@ -22,7 +22,7 @@ ob_start();
 include __DIR__ . '/../../templates/id/logout.html.php';
 
 // Set the page title and output variables
-$title = 'Logout';
+$title = 'Logout - Account';
 $output = ob_get_clean();
 
 // Include the layout template

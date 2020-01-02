@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
   include __DIR__ . '/../../templates/id/login.html.php';
 
   // Set the page title and output variables
-  $title = 'Login';
+  $title = 'Login - Account';
   $output = ob_get_clean();
 }
 

@@ -33,7 +33,7 @@ try {
   include __DIR__ . '/../../templates/id/dashboard.html.php';
 
   // Set the page title and output variables
-  $title = 'Dashboard';
+  $title = 'Dashboard - Account';
   $output = ob_get_clean();
 
 } catch (PDOException $e) {

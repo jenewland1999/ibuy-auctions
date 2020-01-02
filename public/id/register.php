@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
   include __DIR__ . '/../../templates/id/register.html.php';
 
   // Set the page title and output variables
-  $title = 'Register';
+  $title = 'Register - Accout';
   $output = ob_get_clean();
 }
 
