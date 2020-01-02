@@ -5,6 +5,9 @@
 <div class="row">
   <!-- User Sidebar -->
   <div class="col-12 col-xl-3">
+    <figure class="ibuy__profile-pic mb-2">
+      <img src="https://via.placeholder.com/512.png?text=Profile+Picture" alt="" class="img-thumbnail">
+    </figure>
     <ul class="list-group mb-2">
       <li class="list-group-item">
         <p class="my-0"><small>First Name</small></p>
@@ -98,7 +101,7 @@
     </section>
 
     <!-- REVIEWS RECEIVED -->
-    <section>
+    <section class="mb-5">
       <h2 class="section__heading">My Reviews (Received)</h2>
       <hr class="section__rule my-3" />
 
@@ -122,7 +125,7 @@
     </section>
 
     <!-- REVIEWS RECEIVED -->
-    <section>
+    <section class="mb-5">
       <h2 class="section__heading">My Reviews (Given)</h2>
       <hr class="section__rule my-3" />
 
