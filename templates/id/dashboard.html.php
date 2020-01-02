@@ -29,7 +29,7 @@
   <!-- Main Dashboard Content -->
   <div class="col-12 col-md-6 col-lg-9">
     <!-- AUCTIONS -->
-    <section class="mb-5">
+    <section>
       <h2 class="section__heading">My Auctions</h2>
       <hr class="section__rule my-3" />
       
