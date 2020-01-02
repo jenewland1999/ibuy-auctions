@@ -4,7 +4,7 @@
 <!-- Page -->
 <div class="row">
   <!-- User Sidebar -->
-  <div class="col-12 col-md-3">
+  <div class="col-12 col-md-6 col-lg-3 mb-5">
     <figure class="ibuy__profile-pic mb-2">
       <img src="https://via.placeholder.com/512.png?text=Profile+Picture" alt="" class="img-thumbnail">
     </figure>
@@ -27,7 +27,7 @@
   </div> <!-- /User Sidebar -->
 
   <!-- Main Dashboard Content -->
-  <div class="col-12 col-md-9">
+  <div class="col-12 col-md-6 col-lg-9">
     <!-- AUCTIONS -->
     <section class="mb-5">
       <h2 class="section__heading">My Auctions</h2>
@@ -36,7 +36,7 @@
       <!-- Auctions Listing -->
       <div class="row">
         <?php foreach($auctions as $auction): ?>
-          <div class="col-12 col-xl-6 mb-5">
+          <div class="col-12 col-lg-6 mb-5">
             <article class="card h-100">
               <!-- Card Image Carousel -->
               <section id="carousel<?= $auction['auction_id'] ?>" class="carousel slide carousel-fade" date-ride="carousel">
@@ -89,10 +89,10 @@
                 <li class="list-group-item">Auction starts on <?= htmlspecialchars($auction['start_date'], ENT_QUOTES, 'UTF-8'); ?></li>
                 <li class="list-group-item">Auction ends on <?= htmlspecialchars($auction['end_date'], ENT_QUOTES, 'UTF-8'); ?></li>
               </ul>
-              <div class="card-body">
-                <a href="/auctions/auction.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-primary">View Auction</a>
-                <a href="/auctions/update.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-warning">Edit Auction</a>
-                <a href="/auctions/delete.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-danger">Delete Auction</a>
+              <div class="card-body flex-grow-0">
+                <a href="/auctions/auction.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-primary mb-1">View Auction</a>
+                <a href="/auctions/update.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-warning mb-1">Edit Auction</a>
+                <a href="/auctions/delete.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-danger mb-1">Delete Auction</a>
               </div>
             </article>
           </div>
