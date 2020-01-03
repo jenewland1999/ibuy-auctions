@@ -120,7 +120,7 @@ try {
       </ul>
     </nav>
     <figure class="ibuy__banner mb-5">
-      <img src="/public/images/random-banner.php" alt="" />
+      <img src="/public/images/random-banner.php" alt="" class="img-fluid" />
       <figcaption></figcaption>
     </figure>
     <main class="ibuy__main container">
