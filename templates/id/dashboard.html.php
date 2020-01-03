@@ -76,7 +76,12 @@
                     <span class="badge badge-danger">Finished</span>
                   <?php endif; ?>
 
-                  <span class="badge badge-info">Posted on <?= htmlspecialchars($auction['auction_timestamp'], ENT_QUOTES, 'UTF-8'); ?></span>
+                  <?php 
+                    $timestampDateTime = new DateTime($auction['auction_timestamp']);
+                    $timestampDate = $timestampDateTime->format('dS F Y');
+                    $timestampTime = $timestampDateTime->format('H:i');
+                  ?>
+                  <span class="badge badge-info">Posted on <?= htmlspecialchars($timestampDate . ' at ' . $timestampTime, ENT_QUOTES, 'UTF-8'); ?></span>
                 </p>
 
                 <h5 class="card-title"><?= htmlspecialchars($auction['auction_name'], ENT_QUOTES, 'UTF-8'); ?></h5>
@@ -86,8 +91,16 @@
               <ul class="list-group list-group-flush" style="border-top: 1px solid rgba(0,0,0,.125)">
                 <li class="list-group-item">Current Bid: <?= htmlspecialchars(formatCurrency(getCurrentBid($auction)), ENT_QUOTES, 'UTF-8'); ?></li>
                 <li class="list-group-item">Buy Now Price: <?= htmlspecialchars(formatCurrency($auction['buy_price']), ENT_QUOTES, 'UTF-8'); ?></li>
-                <li class="list-group-item">Auction starts on <?= htmlspecialchars($auction['start_date'], ENT_QUOTES, 'UTF-8'); ?></li>
-                <li class="list-group-item">Auction ends on <?= htmlspecialchars($auction['end_date'], ENT_QUOTES, 'UTF-8'); ?></li>
+                <?php 
+                  $startDateTime = new DateTime($auction['start_date']);
+                  $startDate = $startDateTime->format('dS F Y');
+                  $startTime = $startDateTime->format('H:i');
+                  $endDateTime = new DateTime($auction['end_date']);
+                  $endDate = $endDateTime->format('dS F Y');
+                  $endTime = $endDateTime->format('H:i');
+                ?>
+                <li class="list-group-item">Auction starts on <?= htmlspecialchars($startDate . ' at ' . $startTime, ENT_QUOTES, 'UTF-8'); ?></li>
+                <li class="list-group-item">Auction ends on <?= htmlspecialchars($endDate . ' at ' . $endTime, ENT_QUOTES, 'UTF-8'); ?></li>
               </ul>
               <div class="card-body flex-grow-0">
                 <a href="/auctions/auction.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-primary mb-1">View Auction</a>
@@ -113,10 +126,15 @@
               <?php $user = getUser($pdo, $review['user_id']); ?>
               <li class="list-group-item">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1"><?= $user['first_name'] . ' ' . $user['last_name']; ?> said...</h5>
-                  <small><?= $review['review_timestamp']; ?></small>
+                  <h5 class="mb-1"><?= htmlspecialchars($user['first_name'], ENT_QUOTES, 'UTF-8') . ' ' . htmlspecialchars($user['last_name'], ENT_QUOTES, 'UTF-8'); ?> said...</h5>
+                  <?php
+                    $timestampDateTime = new DateTime($review['review_timestamp']);
+                    $timestampDate = $timestampDateTime->format('dS F Y');
+                    $timestampTime = $timestampDateTime->format('H:i');
+                  ?>
+                  <small>Posted on <?= htmlspecialchars($timestampDate . ' at ' . $timestampTime, ENT_QUOTES, 'UTF-8'); ?></small>
                 </div>
-                <p class="mb-1"><?= $review['review_text']; ?></p>
+                <p class="mb-1"><?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?></p>
               </li>
             <?php endforeach; ?>
           </ul>
@@ -137,10 +155,15 @@
               <?php $user = getUser($pdo, $review['review_user']); ?>
               <li class="list-group-item">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">I reviewed <?= $user['first_name'] . ' ' . $user['last_name']; ?> saying...</h5>
-                  <small><?= $review['review_timestamp']; ?></small>
+                  <h5 class="mb-1">I reviewed <?= htmlspecialchars($user['first_name'], ENT_QUOTES, 'UTF-8') . ' ' . htmlspecialchars($user['last_name'], ENT_QUOTES, 'UTF-8'); ?> saying...</h5>
+                  <?php
+                    $timestampDateTime = new DateTime($review['review_timestamp']);
+                    $timestampDate = $timestampDateTime->format('dS F Y');
+                    $timestampTime = $timestampDateTime->format('H:i');
+                  ?>
+                  <small>Posted on <?= htmlspecialchars($timestampDate . ' at ' . $timestampTime, ENT_QUOTES, 'UTF-8'); ?></small>
                 </div>
-                <p class="mb-1"><?= $review['review_text']; ?></p>
+                <p class="mb-1"><?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?></p>
               </li>
             <?php endforeach; ?>
           </ul>

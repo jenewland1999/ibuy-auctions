@@ -46,7 +46,12 @@
         <!-- Card Body -->
         <div class="card-body">
           <p>
-            <span class="badge badge-info">Posted on <?= htmlspecialchars($auction['auction_timestamp'], ENT_QUOTES, 'UTF-8'); ?></span>
+            <?php
+              $timestampDateTime = new DateTime($auction['auction_timestamp']);
+              $timestampDate = $timestampDateTime->format('dS F Y');
+              $timestampTime = $timestampDateTime->format('H:i');
+            ?>
+            <span class="badge badge-info">Posted on <?= htmlspecialchars($timestampDate . ' at ' . $timestampTime, ENT_QUOTES, 'UTF-8'); ?></span>
           </p>
 
           <h5 class="card-title"><?= htmlspecialchars($auction['auction_name'], ENT_QUOTES, 'UTF-8'); ?></h5>
@@ -56,8 +61,16 @@
         <ul class="list-group list-group-flush" style="border-top: 1px solid rgba(0,0,0,.125)">
           <li class="list-group-item">Current Bid: <?= htmlspecialchars(formatCurrency(getCurrentBid($auction)), ENT_QUOTES, 'UTF-8'); ?></li>
           <li class="list-group-item">Buy Now Price: <?= htmlspecialchars(formatCurrency($auction['buy_price']), ENT_QUOTES, 'UTF-8'); ?></li>
-          <li class="list-group-item">Auction starts on <?= htmlspecialchars($auction['start_date'], ENT_QUOTES, 'UTF-8'); ?></li>
-          <li class="list-group-item">Auction ends on <?= htmlspecialchars($auction['end_date'], ENT_QUOTES, 'UTF-8'); ?></li>
+          <?php 
+            $startDateTime = new DateTime($auction['start_date']);
+            $startDate = $startDateTime->format('dS F Y');
+            $startTime = $startDateTime->format('H:i');
+            $endDateTime = new DateTime($auction['end_date']);
+            $endDate = $endDateTime->format('dS F Y');
+            $endTime = $endDateTime->format('H:i');
+          ?>
+          <li class="list-group-item">Auction starts on <?= htmlspecialchars($startDate . ' at ' . $startTime, ENT_QUOTES, 'UTF-8'); ?></li>
+          <li class="list-group-item">Auction ends on <?= htmlspecialchars($endDate . ' at ' . $endTime, ENT_QUOTES, 'UTF-8'); ?></li>
         </ul>
         <div class="card-body">
           <a href="/auctions/auction.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-primary">View Auction</a>
