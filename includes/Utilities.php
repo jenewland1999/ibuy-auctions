@@ -4,4 +4,4 @@
 // TODO: Provide implementation
 function formatCurrency() {}
 function getCurrentBid() {}
-function isAdmin($user_id) {}
+function isAdmin($user_id) { return true; }
