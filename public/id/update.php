@@ -1,7 +1,7 @@
 <?php
 
-// Includes (Database Interface, Session Initialiser and Utilities)
-include_once __DIR__ . '/../../includes/DBInterface.php';
+// Includes (Database Functions, Session Initialiser and Utilities)
+include_once __DIR__ . '/../../includes/DatabaseFunctions.php';
 include_once __DIR__ . '/../../includes/SessionInitialiser.php';
 include_once __DIR__ . '/../../includes/Utilities.php';
 
@@ -22,7 +22,12 @@ try {
   if (isset($_POST['submit'])) {
 
     // Update the user (Exc. user_pwd and is_admin)
-    updateUser($pdo, $_POST['user_id'], $_POST['user_email'], $user['user_pwd'], $_POST['first_name'], $_POST['last_name'], $user['is_admin']);
+    updateUser($pdo, [
+      'user_id' => $_POST['user_id'],
+      'user_email' => $_POST['user_email'],
+      'first_name' => $_POST['first_name'],
+      'last_name' => $_POST['last_name']
+    ]);
 
     // Redirect the user back to the dashboard
     header('location: /id/dashboard.php');

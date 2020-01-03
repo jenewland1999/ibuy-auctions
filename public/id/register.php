@@ -1,7 +1,7 @@
 <?php
 
-// Includes (Database Interface, Session Initialiser and Utilities)
-include_once __DIR__ . '/../../includes/DBInterface.php';
+// Includes (Database Functions, Session Initialiser and Utilities)
+include_once __DIR__ . '/../../includes/DatabaseFunctions.php';
 include_once __DIR__ . '/../../includes/SessionInitialiser.php';
 include_once __DIR__ . '/../../includes/Utilities.php';
 
@@ -20,7 +20,13 @@ if (isset($_POST['submit'])) {
     // TODO: formValidUserRegister($_POST)
     if (true) {
       // Create the user using the form
-      createUser($pdo, $_POST['user_email'], password_hash($_POST['user_pwd'], PASSWORD_DEFAULT), $_POST['first_name'], $_POST['last_name'], false);
+      createUser($pdo, [
+        'user_email' => $_POST['user_email'], 
+        'user_pwd' => password_hash($_POST['user_pwd'], PASSWORD_DEFAULT), 
+        'first_name' => $_POST['first_name'], 
+        'last_name' => $_POST['last_name'], 
+        'is_admin' => false
+      ]);
 
       // Fetch the user that was just created then login the user by storing their user_id in the $_SESSION super global
       $user = getUserByEmail($pdo, $_POST['user_email']);

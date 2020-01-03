@@ -1,7 +1,7 @@
 <?php
 
-// Includes (Database Interface, Session Initialiser and Utilities)
-include_once __DIR__ . '/../../includes/DBInterface.php';
+// Includes (Database Functions, Session Initialiser and Utilities)
+include_once __DIR__ . '/../../includes/DatabaseFunctions.php';
 include_once __DIR__ . '/../../includes/SessionInitialiser.php';
 include_once __DIR__ . '/../../includes/Utilities.php';
 
