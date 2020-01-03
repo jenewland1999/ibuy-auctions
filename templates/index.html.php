@@ -18,7 +18,7 @@
 <div class="row">
   <?php foreach($auctions as $auction): ?>
     <div class="col-12 col-sm-6 col-md-4 col-md-3">
-      <article class="card mb-4">
+      <article class="card mb-4 h-100">
         <!-- Card Image Carousel -->
         <section id="carousel<?= $auction['auction_id'] ?>" class="carousel slide carousel-fade" date-ride="carousel">
           <ol class="carousel-indicators">
@@ -56,7 +56,7 @@
 
           <h5 class="card-title"><?= htmlspecialchars($auction['auction_name'], ENT_QUOTES, 'UTF-8'); ?></h5>
           <h6 class="card-subtitle mb-2 text-muted"><?= htmlspecialchars(getCategory($pdo, $auction['category_id'])['category_name'], ENT_QUOTES, 'UTF-8'); ?></h6>
-          <p class="card-text"><?= htmlspecialchars($auction['auction_description'], ENT_QUOTES, 'UTF-8'); ?>...</p>
+          <p class="card-text"><?= strlen($auction['auction_description']) > 128 ? substr(htmlspecialchars($auction['auction_description'], ENT_QUOTES, 'UTF-8'), 0, 128) . '...' : htmlspecialchars($auction['auction_description'], ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
         <ul class="list-group list-group-flush" style="border-top: 1px solid rgba(0,0,0,.125)">
           <li class="list-group-item">Current Bid: <?= htmlspecialchars(formatCurrency(getCurrentBid($auction)), ENT_QUOTES, 'UTF-8'); ?></li>
@@ -72,8 +72,8 @@
           <li class="list-group-item">Auction starts on <?= htmlspecialchars($startDate . ' at ' . $startTime, ENT_QUOTES, 'UTF-8'); ?></li>
           <li class="list-group-item">Auction ends on <?= htmlspecialchars($endDate . ' at ' . $endTime, ENT_QUOTES, 'UTF-8'); ?></li>
         </ul>
-        <div class="card-body">
-          <a href="/auctions/auction.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-primary">View Auction</a>
+        <div class="card-body flex-grow-0">
+          <a href="/auctions/auction.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-primary mb-1">View Auction</a>
         </div>
       </article>
     </div>
