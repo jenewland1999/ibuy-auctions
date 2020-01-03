@@ -19,7 +19,7 @@ try {
   include_once __DIR__ . '/../../../includes/DatabaseConnection.php';
 
   if (isset($_POST['submit'])) {
-    // Create the category from the form information
+    // Update the category from the form information
     updateCategory($pdo, [
       'category_id' => $_POST['category_id'],
       'category_name' => $_POST['category_name'],
