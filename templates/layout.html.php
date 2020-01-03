@@ -119,7 +119,7 @@ try {
         <?php endif; ?>
       </ul>
     </nav>
-    <figure class="ibuy__banner">
+    <figure class="ibuy__banner mb-5">
       <img src="/public/images/random-banner.php" alt="" />
       <figcaption></figcaption>
     </figure>
