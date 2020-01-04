@@ -22,7 +22,7 @@ try {
     // Delete the auction from the form information
     deleteAuction($pdo, $_POST['auction_id']);
 
-    // Redirect user to categories page
+    // Redirect user to auctions page
     header('location: /admin/auctions/');
   } else {
     // Retrieve the auction being edited
