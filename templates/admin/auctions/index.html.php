@@ -126,6 +126,8 @@
               <td class="align-middle text-nowrap">
                 <?php if($auction['approved'] === '0'): ?>
                   <a href="/admin/auctions/approve.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-success">Approve</a>
+                <?php else: ?>
+                  <a href="/admin/auctions/disapprove.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-danger">Disapprove</a>
                 <?php endif; ?>
                 <a href="/admin/auctions/update.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-warning">Edit</a>
                 <a href="/admin/auctions/delete.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-danger">Delete</a>
