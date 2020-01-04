@@ -125,10 +125,10 @@
               <!-- Auction Auctions -->
               <td class="align-middle text-nowrap">
                 <?php if($auction['approved'] === '0'): ?>
-                  <a href="/admin/auctions/approve.php?id=<?= $category['auction_id']; ?>" class="btn btn-sm btn-success">Approve</a>
+                  <a href="/admin/auctions/approve.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-success">Approve</a>
                 <?php endif; ?>
-                <a href="/admin/auctions/update.php?id=<?= $category['auction_id']; ?>" class="btn btn-sm btn-warning">Edit</a>
-                <a href="/admin/auctions/delete.php?id=<?= $category['auction_id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                <a href="/admin/auctions/update.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-warning">Edit</a>
+                <a href="/admin/auctions/delete.php?id=<?= $auction['auction_id']; ?>" class="btn btn-sm btn-danger">Delete</a>
               </td>
             </tr>
           <?php endforeach; ?>
