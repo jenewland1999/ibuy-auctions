@@ -1,4 +1,7 @@
-(() => {
+$(document).ready(() => {
+  // Initialize bsCustomFileInput
+  bsCustomFileInput.init();
+
   // Cache the DOM
   const DOM = document;
 
@@ -59,4 +62,4 @@
       SELECT.options[0].setAttribute("selected", "");
     });
   }
-})();
+});
