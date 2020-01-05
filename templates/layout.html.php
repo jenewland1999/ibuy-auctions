@@ -64,6 +64,9 @@ try {
     <script async defer src="/public/scripts/lib/popper-1.16.0.min.js"></script>
     <script async defer src="/public/scripts/lib/bootstrap-4.4.1.min.js"></script>
 
+    <!-- Bootstrap Custom File Input -->
+    <script async defer src="/public/scripts/lib/bs-custom-file-input.min.js"></script>
+
     <!-- iBuy JS -->
     <script async defer src="/public/scripts/ibuy.js"></script>
   </head>
