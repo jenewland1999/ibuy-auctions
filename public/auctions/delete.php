@@ -18,11 +18,33 @@ try {
     // Delete the auction from the form information
     deleteAuction($pdo, $_POST['auction_id']);
 
-    // Redirect user to categories page
+    // Redirect user to dashboard page
     header('location: /id/dashboard.php');
   } else {
     // Retrieve the auction being edited
     $auction = getAuction($pdo, $_GET['id']);
+
+    // Get category information
+    $category = getCategory($pdo, $auction['category_id']);
+
+    // Format timestamp
+    $timestampDateTime = new DateTime($auction['auction_timestamp']);
+    $timestampDate = $timestampDateTime->format('dS F Y');
+    $timestampTime = $timestampDateTime->format('H:i');
+
+    // Format start date
+    $startDateTime = new DateTime($auction['start_date']);
+    $startDate = $startDateTime->format('dS F Y');
+    $startTime = $startDateTime->format('H:i');
+
+    // Format end date
+    $endDateTime = new DateTime($auction['end_date']);
+    $endDate = $endDateTime->format('dS F Y');
+    $endTime = $endDateTime->format('H:i');
+
+    // Get start price and buy price
+    $startPrice = formatCurrency($auction['start_price']);
+    $buyPrice = formatCurrency($auction['buy_price']);
 
     // Start the Output Buffer
     ob_start();

@@ -28,6 +28,29 @@ try {
     // Retrieve the auction being edited
     $auction = getAuction($pdo, $_GET['id']);
 
+    // Get category and user information
+    $category = getCategory($pdo, $auction['category_id']);
+    $user = getUser($pdo, $auction['user_id']);
+
+    // Format timestamp
+    $timestampDateTime = new DateTime($auction['auction_timestamp']);
+    $timestampDate = $timestampDateTime->format('d-M-Y');
+    $timestampTime = $timestampDateTime->format('H:i');
+
+    // Format start date
+    $startDateTime = new DateTime($auction['start_date']);
+    $startDate = $startDateTime->format('d-M-Y');
+    $startTime = $startDateTime->format('H:i');
+
+    // Format end date
+    $endDateTime = new DateTime($auction['end_date']);
+    $endDate = $endDateTime->format('d-M-Y');
+    $endTime = $endDateTime->format('H:i');
+
+    // Get start price and buy price
+    $startPrice = formatCurrency($auction['start_price']);
+    $buyPrice = formatCurrency($auction['buy_price']);
+
     // Start the Output Buffer
     ob_start();
 
