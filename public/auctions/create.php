@@ -41,9 +41,13 @@ try {
         'end_date' => $_POST['end_date'] . ' ' . $_POST['end_time'] . ':00',
         'start_price' => processCurrency($_POST['start_price'])
       ]);
+
+      // TODO: Add image uploading - If images are supplied check they're valid types and upload them to the correct place. If no images are supplied copy dummies into a folder to so something displays.
     }
 
     // Redirect user to dashboard page
+    // TODO: Redirect the user to the newly created auction
+    // ! This can only be implemented once a user can view the auction page for auctions they own (regardless of approval status)
     header('location: /id/dashboard.php');
   } else {
 
