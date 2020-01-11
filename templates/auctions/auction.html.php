@@ -85,8 +85,16 @@
     <h3>Reviews of <?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?></h3>
     <ul class="list-group list-group-flush mb-4">
       <?php foreach($reviews as $review): ?>
-        <li class="list-group-item bg-transparent pl-0">
-          <strong><?= htmlspecialchars(getUser($pdo, $review['user_id'])['first_name'], ENT_QUOTES, 'UTF-8'); ?> said</strong> <?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?> <em><?= htmlspecialchars($review['review_timestamp'], ENT_QUOTES, 'UTF-8'); ?></em>
+        <?php 
+          // User for current review
+          $reviewUser = getUser($pdo, $review['user_id']);
+
+          // Format review timestamp
+          $reviewTimestamp = new DateTime($review['review_timestamp']);
+          $reviewTimestamp = $reviewTimestamp->format('d/m/Y');
+        ?>
+        <li class="list-group-item bg-transparent pl-0" id="<?= 'Review_' . $review['review_id']; ?>">
+          <strong><?= htmlspecialchars($reviewUser['first_name'], ENT_QUOTES, 'UTF-8'); ?> said</strong> <?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?> <em><?= $reviewTimestamp; ?></em>
         </li>
       <?php endforeach; ?>
     </ul>
