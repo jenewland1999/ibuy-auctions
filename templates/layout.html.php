@@ -135,6 +135,7 @@ try {
     </main>
     <footer class="ibuy__footer">
       <div class="container">
+        <hr class="my-5" />
         <p class="ibuy__copyright text-muted my-5">
           Copyright &copy; <?= date('Y'); ?> iBuy Auctions
         </p>
