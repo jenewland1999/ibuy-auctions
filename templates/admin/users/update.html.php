@@ -22,6 +22,12 @@
         <input type="email" name="user_email" id="user_email" placeholder="john.smith@example.org" class="form-control" value="<?= $user['user_email'] ?>" required />
       </div>
       <div class="form-group">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" name="is_admin" id="is_admin" class="custom-control-input" <?= $user['is_admin'] == 1 ? 'checked' : '' ?>>
+          <label class="custom-control-label" for="is_admin">Make this user an administrator?</label>
+        </div>
+      </div>
+      <div class="form-group">
         <button type="submit" name="submit" class="btn btn-block btn-warning">Update User</button>
       </div>
     </form>

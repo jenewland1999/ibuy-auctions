@@ -19,13 +19,27 @@ try {
   include_once __DIR__ . '/../../../includes/DatabaseConnection.php';
 
   if (isset($_POST['submit'])) {
-    // Update the user from the form information
-    updateUser($pdo, [
-      'user_id' => $_POST['user_id'],
-      'user_email' => $_POST['user_email'],
-      'first_name' => $_POST['first_name'],
-      'last_name' => $_POST['last_name']
-    ]);
+    // Checks if the is_admin checkbox is ticked and acts accordingly
+    if (isset($_POST['is_admin'])) {
+      // Update the user from the form information
+      updateUser($pdo, [
+        'user_id' => $_POST['user_id'],
+        'user_email' => $_POST['user_email'],
+        'first_name' => $_POST['first_name'],
+        'last_name' => $_POST['last_name'],
+        'is_admin' => true
+      ]);
+    } else {
+      // Update the user from the form information
+      updateUser($pdo, [
+        'user_id' => $_POST['user_id'],
+        'user_email' => $_POST['user_email'],
+        'first_name' => $_POST['first_name'],
+        'last_name' => $_POST['last_name'],
+        'is_admin' => false
+      ]);
+    }
+    
 
     // Redirect user to users page
     header('location: /admin/users/');

@@ -24,11 +24,6 @@
               <td class="align-middle text-nowrap"><?= htmlspecialchars($user['last_name'], ENT_QUOTES, 'UTF-8'); ?></td>
               <td class="align-middle text-nowrap"><?= $user['is_admin'] == 1 ? 'Admin' : 'Regular' ?></td>
               <td class="align-middle text-nowrap">
-                <?php if($user['is_admin'] === '0'): ?>
-                  <a href="/admin/users/promote.php?id=<?= $user['user_id']; ?>" class="btn btn-sm btn-success" title="promotes to admin rank">Promote</a>
-                <?php else: ?>
-                  <a href="/admin/users/demote.php?id=<?= $user['user_id']; ?>" class="btn btn-sm btn-danger" title="demotes to regular rank">Demote</a>
-                <?php endif; ?>
                 <a href="/admin/users/update.php?id=<?= $user['user_id']; ?>" class="btn btn-sm btn-warning">Edit</a>
                 <a href="/admin/users/delete.php?id=<?= $user['user_id']; ?>" class="btn btn-sm btn-danger">Delete</a>
               </td>
