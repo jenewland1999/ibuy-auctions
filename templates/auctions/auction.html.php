@@ -50,7 +50,7 @@
       <li class="list-group-item bg-transparent pl-0">Current Bid: <?= htmlspecialchars(getCurrentBid(), ENT_QUOTES, 'UTF-8'); ?></li>
       
       <!-- Time Remaining (NOTE: JS Handles the countdown magic) -->
-      <li class="list-group-item bg-transparent pl-0">Time Remaining: <?= htmlspecialchars($auction['end_date'], ENT_QUOTES, 'UTF-8'); ?></li>
+      <li class="list-group-item bg-transparent pl-0">Time Remaining: <?= $timeRemaining->format('%m Months, %d Days, %h Hours, %i Minutes, %s Seconds') ?></li>
     </ul>
 
     <?php if (isset($_SESSION['uuid'])): ?>
