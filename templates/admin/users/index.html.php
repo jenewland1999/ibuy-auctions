@@ -3,8 +3,6 @@
     <h1>Users</h1>
     <hr class="my-5" />
 
-    <a href="/admin/users/create.php" class="btn btn-success">Create User</a>
-
     <div class="table-responsive">
       <table class="table table-striped mt-5">
         <thead class="thead-light">
