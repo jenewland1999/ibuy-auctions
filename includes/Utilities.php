@@ -35,6 +35,17 @@ function isAdmin($pdo, $user_id) {
     return false;
 }
 
+// Format a MySQL Datetime value into a desirable format
+function getFormattedDateTime($dateTime, $format = 'dS F Y \a\t H:i') {
+  $dateTime = new DateTime($dateTime);
+  return $dateTime->format($format);
+}
+
+// get a user's full name with a space
+function getUserFullName($user) {
+  return htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8');
+}
+
 // Temporary function header to prevent exceptions
 // TODO: Implement and move to DatabaseFunctions()
 function getCurrentBid() {}

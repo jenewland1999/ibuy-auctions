@@ -81,22 +81,15 @@
     <!-- Auction Description -->
     <h3>Description</h3>
     <p style="white-space: pre-wrap;"><?= htmlspecialchars($auction['auction_description'], ENT_QUOTES, 'UTF-8'); ?></p>
-  </div>
-  <div class="col-12">
+
+    <hr class="my-5" />
+
     <!-- User Reviews -->
     <h3>Reviews of <?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?></h3>
     <ul class="list-group list-group-flush mb-4">
       <?php foreach($reviews as $review): ?>
-        <?php 
-          // User for current review
-          $reviewUser = getUser($pdo, $review['user_id']);
-
-          // Format review timestamp
-          $reviewTimestamp = new DateTime($review['review_timestamp']);
-          $reviewTimestamp = $reviewTimestamp->format('d/m/Y');
-        ?>
         <li class="list-group-item bg-transparent pl-0" id="<?= 'Review_' . $review['review_id']; ?>">
-          <strong><?= htmlspecialchars($reviewUser['first_name'], ENT_QUOTES, 'UTF-8'); ?> said</strong> <?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?> <em><?= $reviewTimestamp; ?></em>
+          <strong><?= htmlspecialchars(getUser($pdo, $review['user_id'])['first_name'], ENT_QUOTES, 'UTF-8'); ?> said</strong> <?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?> <em><?= getFormattedDateTime($review['review_timestamp'], 'd/m/Y') ?></em>
         </li>
       <?php endforeach; ?>
     </ul>
