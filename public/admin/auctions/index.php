@@ -10,7 +10,7 @@ if (!isset($_SESSION['uuid']))
   header('location: /id/login.php');
 
 // Check if user is an admin if not redirect to homepage
-if (!isAdmin($_SESSION['uuid']))
+if (!isAdmin($pdo, $_SESSION['uuid']))
   header('location: /');
 
 // Attempt to establish a DB connection.
