@@ -53,7 +53,9 @@
       <li class="list-group-item bg-transparent pl-0">Time Remaining: <?= $timeRemaining->format('%m Months, %d Days, %h Hours, %i Minutes, %s Seconds') ?></li>
     </ul>
 
-    <?php if (isset($_SESSION['uuid'])): ?>
+    <?php if (isset($_SESSION['uuid']) && $user['user_id'] === $_SESSION['uuid']): /* If it's your auction */ ?>
+      <p>You can't bid on your own auctions.</p>
+    <?php elseif (isset($_SESSION['uuid'])): ?>
       <form action="" method="post" class="form-inline">
         <input type="hidden" name="auction_id" value="<?= $_GET['id']; ?>" required />
         
