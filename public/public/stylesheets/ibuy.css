@@ -102,6 +102,10 @@
 .ibuy__nav-item {
 }
 
+.ibuy__navbar--general .ibuy__nav-item.ibuy__nav-dropdown {
+  margin-right: 1rem;
+}
+
 .ibuy__nav-link,
 .ibuy__nav-link:link,
 .ibuy__nav-link:visited {
