@@ -3,7 +3,7 @@
     <h1>Categories</h1>
     <hr class="my-5" />
 
-    <a href="/admin/categories/create.php" class="btn btn-success">Create Auction</a>
+    <a href="/admin/categories/create.php" class="btn btn-success">Create Category</a>
 
     <div class="table-responsive">
       <table class="table table-striped mt-5">
