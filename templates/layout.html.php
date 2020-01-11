@@ -76,7 +76,7 @@ try {
   <body class="ibuy">
     <nav class="ibuy__navbar ibuy__navbar--general">
       <ul class="ibuy__navbar-nav">
-        <?php if (isset($_SESSION['uuid']) && isAdmin($_SESSION['uuid'])): ?>
+        <?php if (isset($_SESSION['uuid']) && isAdmin($pdo, $_SESSION['uuid'])): ?>
           <li class="ibuy__nav-item ibuy__nav-dropdown">
             <a href="#" class="ibuy__nav-link ibuy__nav-dropdown-toggle" id="navbarDropdownToggleGeneral">Admin</a>
             <ul class="ibuy__navbar-nav ibuy__nav-dropdown-menu" id="navbarDropdownGeneral">

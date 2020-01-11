@@ -89,8 +89,8 @@
                 <p class="card-text"><?= strlen($auction['auction_description']) > 128 ? substr(htmlspecialchars($auction['auction_description'], ENT_QUOTES, 'UTF-8'), 0, 128) . '...' : htmlspecialchars($auction['auction_description'], ENT_QUOTES, 'UTF-8'); ?></p>
               </div>
               <ul class="list-group list-group-flush" style="border-top: 1px solid rgba(0,0,0,.125)">
-                <li class="list-group-item">Current Bid: <?= htmlspecialchars(formatCurrency(getCurrentBid($auction)), ENT_QUOTES, 'UTF-8'); ?></li>
-                <li class="list-group-item">Buy Now Price: <?= htmlspecialchars(formatCurrency($auction['buy_price']), ENT_QUOTES, 'UTF-8'); ?></li>
+                <li class="list-group-item">Current Bid: <?= htmlspecialchars(formatCurrency(getCurrentBid($auction), '£'), ENT_QUOTES, 'UTF-8'); ?></li>
+                <li class="list-group-item">Buy Now Price: <?= htmlspecialchars(formatCurrency($auction['buy_price'], '£'), ENT_QUOTES, 'UTF-8'); ?></li>
                 <?php 
                   $startDateTime = new DateTime($auction['start_date']);
                   $startDate = $startDateTime->format('dS F Y');

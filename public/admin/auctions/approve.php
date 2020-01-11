@@ -10,7 +10,7 @@ if (!isset($_SESSION['uuid']))
   header('location: /id/login.php');
 
 // Check if user is an admin if not redirect to homepage
-if (!isAdmin($_SESSION['uuid']))
+if (!isAdmin($pdo, $_SESSION['uuid']))
   header('location: /');
 
 // Attempt to establish a DB connection.
@@ -51,8 +51,8 @@ try {
     $endTime = $endDateTime->format('H:i');
 
     // Get start price and buy price
-    $startPrice = formatCurrency($auction['start_price']);
-    $buyPrice = formatCurrency($auction['buy_price']);
+    $startPrice = formatCurrency($auction['start_price'], '£');
+    $buyPrice = formatCurrency($auction['buy_price'], '£');
 
     // TODO: Implement retrieval of current bid
     // Get current bid

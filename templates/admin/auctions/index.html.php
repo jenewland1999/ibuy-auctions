@@ -46,8 +46,8 @@
               $endTime = $endDateTime->format('H:i');
 
               // Get start price and buy price
-              $startPrice = formatCurrency($auction['start_price']);
-              $buyPrice = formatCurrency($auction['buy_price']);
+              $startPrice = formatCurrency($auction['start_price'], '£');
+              $buyPrice = formatCurrency($auction['buy_price'], '£');
 
               // TODO: Implement retrieval of current bid
               // Get current bid
