@@ -35,7 +35,7 @@ try {
     include __DIR__ . '/../../../templates/admin/categories/delete.html.php';
 
     // Set the page title and output variables
-    $title = 'Delete - Categories - Admin';
+    $title = 'Delete - Category - Admin';
     $output = ob_get_clean();
   }
 

@@ -39,7 +39,7 @@ try {
     include __DIR__ . '/../../../templates/admin/categories/update.html.php';
 
     // Set the page title and output variables
-    $title = 'Update - Categories - Admin';
+    $title = 'Update - Category - Admin';
     $output = ob_get_clean();
   }
 
