@@ -67,6 +67,9 @@ try {
     <!-- Bootstrap Custom File Input -->
     <script async defer src="/public/scripts/lib/bs-custom-file-input.min.js"></script>
 
+    <!-- ShareThis Social Media Buttons -->
+    <script async defer src="https://platform-api.sharethis.com/js/sharethis.js#property=5e1a012df9d66200125f891c&product=inline-share-buttons&cms=sop"></script>
+
     <!-- iBuy JS -->
     <script async defer src="/public/scripts/ibuy.js"></script>
   </head>

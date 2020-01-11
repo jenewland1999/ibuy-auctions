@@ -23,6 +23,9 @@
         <span class="sr-only">Next</span>
       </a>
     </section>
+
+    <p class="text-center h5">Share this Auction:</p>
+    <div class="sharethis-inline-share-buttons"></div>
   </div>
   <div class="col-md-7">
 
