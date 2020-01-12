@@ -222,3 +222,64 @@
   border-left: 2px solid #ddd;
   border-right: 2px solid #ddd;
 } */
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+/***** Adapted from: https://codepen.io/jamesbarnett/pen/vlpkh *****/
+
+.ibuy__rating > label {
+  color: #cccccc;
+  font-size: 1.5rem;
+  float: right;
+}
+
+.ibuy__rating > input:checked ~ label, /* show gold star when clicked */
+.ibuy__rating:not(:checked) > label:hover, /* hover current star */
+.ibuy__rating:not(:checked) > label:hover ~ label {
+  color: #f4ae01;
+} /* hover previous stars in list */
+
+.ibuy__rating > input:checked + label:hover, /* hover current star when changing ibuy__rating */
+.ibuy__rating > input:checked ~ label:hover,
+.ibuy__rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.ibuy__rating > input:checked ~ label:hover ~ label {
+  color: #f4ae01;
+}
+
+.review-actions {
+  display: none;
+}
+
+.review-item:hover > .review-actions,
+.review-item:focus > .review-actions {
+  display: block;
+}
+
+.ibuy__btn-social-media {
+  background-color: #ccc;
+  border: 0;
+  border-radius: 100%;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.5em;
+}
+
+a.ibuy__btn-social-media {
+  display: inline-block;
+}
+
+.ibuy__btn-social-media:hover {
+  color: #ffffff;
+}
+
+.ibuy__btn-social-media[data-target="fb-share-btn"] {
+  background-color: #4267b2; /* Facebook Blue */
+}
+
+.ibuy__btn-social-media[data-target="tw-share-btn"] {
+  background-color: #1da1f2; /* Twitter Blue */
+}
+
+.ibuy__btn-social-media .svg-inline--fa.fa-w-10 {
+  width: 1rem;
+}

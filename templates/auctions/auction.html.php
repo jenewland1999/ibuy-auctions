@@ -36,12 +36,7 @@
     <h2 class="text-secondary"><?= htmlspecialchars($category['category_name'], ENT_QUOTES, 'UTF-8'); ?></h2>
     <ul class="list-group list-group-flush mb-4">
       <!-- Auction Timestamp -->
-      <?php 
-        $timestampDateTime = new DateTime($auction['auction_timestamp']);
-        $timestampDate = $timestampDateTime->format('dS F Y');
-        $timestampTime = $timestampDateTime->format('H:i');
-      ?>
-      <li class="list-group-item bg-transparent pl-0">Posted on <?= htmlspecialchars($timestampDate . ' at ' . $timestampTime, ENT_QUOTES, 'UTF-8'); ?></li>
+      <li class="list-group-item bg-transparent pl-0">Posted on <?= getFormattedDateTime($auction['auction_timestamp']); ?></li>
       
       <!-- Auction Author -->
       <li class="list-group-item bg-transparent pl-0">Auction created by <a href="/auctions?user=<?= $user['user_id'] ?>"><?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?></a></li>
@@ -85,11 +80,33 @@
     <hr class="my-5" />
 
     <!-- User Reviews -->
-    <h3>Reviews of <?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?></h3>
-    <ul class="list-group list-group-flush mb-4">
+    <h3>Reviews of <?= getUserFullName($user); ?></h3>
+    <ul class="reviews list-group list-group-flush mb-4">
       <?php foreach($reviews as $review): ?>
-        <li class="list-group-item bg-transparent pl-0" id="<?= 'Review_' . $review['review_id']; ?>">
-          <strong><?= htmlspecialchars(getUser($pdo, $review['user_id'])['first_name'], ENT_QUOTES, 'UTF-8'); ?> said</strong> <?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?> <em><?= getFormattedDateTime($review['review_timestamp'], 'd/m/Y') ?></em>
+        <li class="review-item list-group-item bg-transparent pl-0" id="<?= 'Review_' . $review['review_id']; ?>">
+          <?php include __DIR__ . '/../../components/rating.html.php'; ?>
+          <p>
+            <strong><?= htmlspecialchars(getUser($pdo, $review['review_author'])['first_name'], ENT_QUOTES, 'UTF-8'); ?> said</strong> <?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?> <em><?= getFormattedDateTime($review['review_timestamp'], 'd/m/Y') ?></em>
+          </p>
+          <?php if (isset($_SESSION['uuid'])): ?>
+            <?php if ($review['review_author'] == $_SESSION['uuid']): ?>
+              <div class="review-actions">
+                <a href="/reviews/update.php?auction_id=<?= $auction['auction_id'] ?>&id=<?= $review['review_id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                <a href="/reviews/delete.php?auction_id=<?= $auction['auction_id'] ?>&id=<?= $review['review_id'] ?>" class="btn btn-sm btn-danger">Delete</a>
+              </div>
+            <?php endif; ?>
+          <?php endif; ?>
+          <div class="sharegrp">
+            <button class="ibuy__btn-social-media" data-target="fb-share-btn" data-author="<?= getUserFullName(getUser($pdo, $review['review_author'])); ?>" data-rating="<?= $review['review_rating']; ?>" data-reviewee="<?= getUserFullName(getUser($pdo, $review['review_reviewee'])); ?>">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+            <?php
+              $str = getUserFullName(getUser($pdo, $review['review_author'])) . ' gave ' . getUserFullName(getUser($pdo, $review['review_reviewee'])) . ' a ' . $review['review_rating'] . '-star rating on iBuy Auctions. Visit today and leave your own review.';
+            ?>
+            <a href="https://twitter.com/intent/tweet?text=<?= str_replace(' ', '+', $str) ?>" target="_blank" class="ibuy__btn-social-media" data-target="tw-share-btn">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
         </li>
       <?php endforeach; ?>
     </ul>
@@ -98,16 +115,27 @@
       <p>You can't post a review on yourself.</p>
     <?php elseif (isset($_SESSION['uuid'])): /* If you're logged in */ ?>
       <form action="" method="post">
-        <!-- Review User -->
-        <input type="hidden" name="review_user" value="<?= $auction['user_id'] ?>" required />
+        <!-- Review Author -->
+        <input type="hidden" name="review_author" value="<?= $_SESSION['uuid'] ?>" required />
         
-        <!-- User ID -->
-        <input type="hidden" name="user_id" value="<?= $_SESSION['uuid'] ?>" required />
-        
+        <!-- Review Reviewee -->
+        <input type="hidden" name="review_reviewee" value="<?= $auction['user_id'] ?>" required />
+
         <!-- Review Text -->
         <div class="form-group">
-          <label for="review_text" class="sr-only">Review Text</label>
+          <label for="review_text">Review Text</label>
           <textarea name="review_text" id="review_text" rows="8" class="form-control rounded-0" placeholder="Enter your review..." required></textarea>
+        </div>
+
+        <!-- Review Rating -->
+        <div class="form-group d-inline-block">
+          <label>Review Rating</label>
+          <fieldset class="ibuy__rating">
+            <?php for ($i = 5; $i > 0; $i--): ?>
+              <input type="radio" name="review_rating" id="review_rating_<?= $i ?>" class="d-none" value="<?= $i ?>" required />
+              <label for="review_rating_<?= $i ?>" class="mb-0 mr-1" title="<?= $i ?> star(s)"><i class="fas fa-star"></i></label>
+            <?php endfor; ?>
+          </fieldset>
         </div>
 
         <button type="submit" name="submit__review" class="btn btn-block btn-primary rounded-0">Post Review</button>

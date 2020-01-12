@@ -447,10 +447,11 @@ function updateCategory($pdo, $fields) {
 function getReviews($pdo) {
   $sql = '
     SELECT  `review_id`, 
+            `review_author`, 
+            `review_rating`, 
+            `review_reviewee`, 
             `review_text`, 
-            `review_timestamp`, 
-            `review_user`, 
-            `user_id`
+            `review_timestamp`
     FROM    `reviews`
   ';
 
@@ -458,38 +459,40 @@ function getReviews($pdo) {
 }
 
 // Retrieve all reviews by a particular user from the DB
-function getReviewsByUser($pdo, $user_id) {
+function getReviewsByUser($pdo, $review_author) {
   $sql = '
     SELECT  `review_id`, 
+            `review_author`, 
+            `review_rating`, 
+            `review_reviewee`, 
             `review_text`, 
-            `review_timestamp`, 
-            `review_user`, 
-            `user_id`
+            `review_timestamp`
     FROM    `reviews`
-    WHERE   `user_id` = :user_id
+    WHERE   `review_author` = :review_author
   ';
 
   $parameters = [
-    'user_id' => $user_id
+    'review_author' => $review_author
   ];
 
   return query($pdo, $sql, $parameters)->fetchAll();
 }
 
 // Retrieve all reviews for a particular user from the DB
-function getReviewsForUser($pdo, $review_user) {
+function getReviewsForUser($pdo, $review_reviewee) {
   $sql = '
     SELECT  `review_id`, 
+            `review_author`, 
+            `review_rating`, 
+            `review_reviewee`, 
             `review_text`, 
-            `review_timestamp`, 
-            `review_user`, 
-            `user_id`
+            `review_timestamp`
     FROM    `reviews`
-    WHERE   `review_user` = :review_user
+    WHERE   `review_reviewee` = :review_reviewee
   ';
 
   $parameters = [
-    'review_user' => $review_user
+    'review_reviewee' => $review_reviewee
   ];
 
   return query($pdo, $sql, $parameters)->fetchAll();
@@ -499,10 +502,11 @@ function getReviewsForUser($pdo, $review_user) {
 function getReview($pdo, $review_id) {
   $sql = '
     SELECT  `review_id`, 
+            `review_author`, 
+            `review_rating`, 
+            `review_reviewee`, 
             `review_text`, 
-            `review_timestamp`, 
-            `review_user`, 
-            `user_id`
+            `review_timestamp`
     FROM    `reviews`
     WHERE   `review_id` = :review_id
   ';

@@ -2,6 +2,16 @@ $(document).ready(() => {
   // Initialize bsCustomFileInput
   bsCustomFileInput.init();
 
+  // Initialise FB SDK
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: "514703019394466",
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: "v5.0"
+    });
+  };
+
   // Cache the DOM
   const DOM = document;
 
@@ -61,5 +71,36 @@ $(document).ready(() => {
       SELECT.options[0].selected = true;
       SELECT.options[0].setAttribute("selected", "");
     });
+  }
+
+  // If the user is on a page that includes reviews setup review share button handlers
+  if (document.location.pathname === "/auctions/auction.php") {
+    const REVIEWS_SHARE_FB = DOM.querySelectorAll(
+      'button[data-target="fb-share-btn"]'
+    );
+    for (const REVIEW_SHARE_FB of REVIEWS_SHARE_FB) {
+      REVIEW_SHARE_FB.addEventListener("click", e => {
+        FB.ui(
+          {
+            method: "share",
+            href: window.location.href + "#" + REVIEW_SHARE_FB.offsetParent.id,
+            quote: `${REVIEW_SHARE_FB.dataset.author} gave ${REVIEW_SHARE_FB.dataset.reviewee} a ${REVIEW_SHARE_FB.dataset.rating} star rating on iBuy Auctions. Visit today and leave your own review.`
+          },
+          function(response) {}
+        );
+      });
+    }
+
+    const REVIEWS_SHARE_TW = DOM.querySelectorAll(
+      'a[data-target="tw-share-btn"]'
+    );
+
+    for (const REVIEW_SHARE_TW of REVIEWS_SHARE_TW) {
+      REVIEW_SHARE_TW.href +=
+        "&url=" +
+        window.location.href +
+        "%23" +
+        REVIEW_SHARE_TW.offsetParent.id;
+    }
   }
 });

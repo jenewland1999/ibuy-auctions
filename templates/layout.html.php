@@ -55,6 +55,8 @@ try {
     <!-- Font (Oxygen Regular) -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700&display=swap" />
 
+    <!-- Font Awesome Icons -->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/5b67f7f0e3.js"></script>
 
     <!-- iBuy CSS -->
     <link rel="stylesheet" href="/public/stylesheets/ibuy.css" />
@@ -68,11 +70,14 @@ try {
     <!-- Bootstrap Custom File Input -->
     <script async defer src="/public/scripts/lib/bs-custom-file-input.min.js"></script>
 
-    <!-- ShareThis Social Media Buttons -->
+    <!-- ShareThis Social Media Buttons (Auction Sharing) -->
     <script async defer src="https://platform-api.sharethis.com/js/sharethis.js#property=5e1a012df9d66200125f891c&product=inline-share-buttons&cms=sop"></script>
 
     <!-- iBuy JS -->
     <script async defer src="/public/scripts/ibuy.js"></script>
+
+    <!-- Facebook JS SDK -->
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
   </head>
   <body class="ibuy">
     <nav class="ibuy__navbar ibuy__navbar--general">

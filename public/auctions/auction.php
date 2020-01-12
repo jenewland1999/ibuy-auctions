@@ -43,10 +43,11 @@ try {
   // Handle review submission
   if (isset($_POST['submit__review'])) {
     createReview($pdo, [
+      'review_author' => $_POST['review_author'],
+      'review_rating' => $_POST['review_rating'],
+      'review_reviewee' => $_POST['review_reviewee'],
       'review_text' => $_POST['review_text'],
       'review_timestamp' => new DateTime(),
-      'review_user' => $_POST['review_user'],
-      'user_id' => $_POST['user_id']
     ]);
 
     // Refresh the page so the new review shows up.

@@ -29,6 +29,10 @@
         <button type="submit" name="submit" class="btn btn-block btn-warning">Update Review</button>
       </div>
     </form>
-    <a href="/admin/reviews/" class="btn btn-block btn-secondary">Return to Reviews List</a>
+    <?php if (isset($_GET['auction_id'])): ?>
+      <a href="/auctions/auction.php?id=<?= $_GET['auction_id']; ?>" class="btn btn-block btn-secondary">Return to Auction</a>
+    <?php else: ?>
+      <a href="/id/dashboard.php" class="btn btn-block btn-secondary">Return to Dashboard</a>
+    <?php endif; ?>
   </div>
 </div>

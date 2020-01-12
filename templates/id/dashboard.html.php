@@ -47,29 +47,37 @@
       <hr class="section__rule my-3" />
 
       <ul class="list-group">
-        <?php 
-          foreach($reviewsReceived as $review) {
-            $user = getUser($pdo, $review['user_id']); 
-            $give = false;
-            include __DIR__ . '/../../components/review.html.php';
-          } 
-        ?>
+        <?php foreach($reviewsReceived as $review): ?>
+          <li class="list-group-item" id="<?= 'Review_' . $review['review_id']; ?>">
+            <div class="d-flex w-100 justify-content-between">
+              <div class="review__rating"><?php include __DIR__ . '/../../components/rating.html.php'; ?></div>
+              <small>Posted on <?= htmlspecialchars(getFormattedDateTime($review['review_timestamp']), ENT_QUOTES, 'UTF-8'); ?></small>
+            </div>
+            <h5><?= getUserFullName(getUser($pdo, $review['review_author'])); ?> said...</h5>
+            <p class="mb-0"><?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?></p>
+          </li>
+        <?php endforeach; ?>
       </ul>
     </section>
 
-    <!-- REVIEWS RECEIVED -->
+    <!-- REVIEWS GIVEN -->
     <section class="mb-5">
       <h2 class="section__heading">My Reviews (Given)</h2>
       <hr class="section__rule my-3" />
 
       <ul class="list-group">
-        <?php 
-          foreach($reviewsGiven as $review) {
-            $user = getUser($pdo, $review['review_user']); 
-            $give = true;
-            include __DIR__ . '/../../components/review.html.php';
-          } 
-        ?>
+        <?php foreach($reviewsGiven as $review): ?>
+          <li class="list-group-item" id="<?= 'Review_' . $review['review_id']; ?>">
+            <div class="d-flex w-100 justify-content-between">
+              <div class="review__rating"><?php include __DIR__ . '/../../components/rating.html.php'; ?></div>
+              <small>Posted on <?= htmlspecialchars(getFormattedDateTime($review['review_timestamp']), ENT_QUOTES, 'UTF-8'); ?></small>
+            </div>
+            <h5>I reviewed <?= getUserFullName(getUser($pdo, $review['review_reviewee'])); ?> saying...</h5>
+            <p class="mb-3"><?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?></p>
+            <a href="/reviews/update.php?id=<?= $review['review_id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+            <a href="/reviews/delete.php?id=<?= $review['review_id'] ?>" class="btn btn-sm btn-danger">Delete</a>
+          </li>
+        <?php endforeach; ?>
       </ul>
     </section>
   </div> <!-- /Main Dashboard Content -->
