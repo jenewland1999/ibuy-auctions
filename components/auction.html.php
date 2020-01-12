@@ -1,4 +1,4 @@
-<?php if (strpos($_SERVER['REQUEST_URI'], 'dashboard.php') !== false): ?>
+<?php if (strpos($_SERVER['REQUEST_URI'], 'dashboard.php') !== false || strpos($_SERVER['REQUEST_URI'], 'profile.php') !== false): ?>
   <div class="col-12 col-lg-6 mb-5">
 <?php else: ?>
   <div class="col-12 col-sm-6 col-md-4">

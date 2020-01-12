@@ -39,7 +39,7 @@
       <li class="list-group-item bg-transparent pl-0">Posted on <?= getFormattedDateTime($auction['auction_timestamp']); ?></li>
       
       <!-- Auction Author -->
-      <li class="list-group-item bg-transparent pl-0">Auction created by <a href="/auctions?user=<?= $user['user_id'] ?>"><?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?></a></li>
+      <li class="list-group-item bg-transparent pl-0">Auction created by <a href="/id/profile.php?id=<?= $user['user_id'] ?>"><?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?></a></li>
       
       <!-- Current Bid -->
       <li class="list-group-item bg-transparent pl-0 font-weight-bold" style="color:red;font-size:2rem;">Current Bid: <?= htmlspecialchars(formatCurrency(getCurrentBid(), '£'), ENT_QUOTES, 'UTF-8'); ?></li>

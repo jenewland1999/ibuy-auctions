@@ -195,6 +195,38 @@ function getAuctionsByNameAndCatRestricted($pdo, $auction_name, $category_id) {
   return query($pdo, $sql, $parameters)->fetchAll();
 }
 
+// Retrieves all auctions by a particular user from the DB that:
+// have started, haven't ended, are approved and haven't finished.
+function getAuctionsByUserRestricted($pdo, $user_id) {
+  $sql = '
+    SELECT  `auction_id`, 
+            `auction_name`, 
+            `auction_description`, 
+            `auction_timestamp`, 
+            `category_id`, 
+            `user_id`, 
+            `start_date`, 
+            `end_date`, 
+            `approved`, 
+            `finished`, 
+            `start_price`, 
+            `buy_price`
+    FROM    `auctions`
+    WHERE `approved` = TRUE 
+    AND   `finished` = FALSE 
+    AND   `end_date` > SYSDATE() 
+    AND   `start_date` <= SYSDATE()
+    AND   `user_id` = :user_id
+    ORDER BY `auction_timestamp` DESC
+  ';
+
+  $parameters = [ 
+    'user_id' => $user_id 
+  ];
+
+  return query($pdo, $sql, $parameters)->fetchAll();
+}
+
 // Retrieve the auction with the matching auction_id from the DB
 function getAuction($pdo, $auction_id) {
   $sql = '
