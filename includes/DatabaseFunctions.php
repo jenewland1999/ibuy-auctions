@@ -421,6 +421,21 @@ function getBidCurrent($pdo, $auction_id) {
   return $bids[0];
 }
 
+// Get the number of unique bidders
+function getBidAuthorCount($pdo, $auction_id) {
+  $sql = '
+    SELECT  COUNT(DISTINCT `bid_author`)
+    FROM    `bids`
+    WHERE   `auction_id` = :auction_id
+  ';
+
+  $parameters = [
+    'auction_id' => $auction_id
+  ];
+
+  return query($pdo, $sql, $parameters)->fetch();
+}
+
 function deleteBid($pdo, $bid_id) {
   $sql = '
     DELETE FROM `bids` 
