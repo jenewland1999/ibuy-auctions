@@ -4,8 +4,8 @@
       <i class="fas fa-arrow-left"></i> Return to Auction
     </a>
     <p class="bid__stats">
-      <small class="text-muted mr-2">Bidders: </small><span class="bid__stat mr-2">0</span>
-      <small class="text-muted mr-2">Bids: </small><span class="bid__stat mr-2">0</span>
+      <small class="text-muted mr-2">Bidders: </small><span class="bid__stat mr-2"><?= getBidAuthorCount($pdo, $auction['auction_id'])[0]; ?></span>
+      <small class="text-muted mr-2">Bids: </small><span class="bid__stat mr-2"><?= count($bids); ?></span>
       <small class="text-muted mr-2">Time Remaining: </small><span class="bid__stat mr-2"><?= getAuctionTimeRemaining($auction); ?></span>
     </p>
     <?php if (count($bids) > 0): ?>
