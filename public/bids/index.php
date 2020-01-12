@@ -27,19 +27,9 @@ try {
   $bids = getBidsByAuction($pdo, $auction['auction_id']);
 
   if (isset($_POST['submit'])) {
-    // Check the amount being entered and if it's lower than the current bid display an error
-    echo 'Bid Entered: ' . processCurrency($_POST['bid_amount']);
-    echo 'Bid Current: ' . getBidCurrentPrice($pdo, $auction['auction_id']);
-    if (processCurrency($_POST['bid_amount']) < getBidCurrentPrice($pdo, $auction['auction_id'])) {
-      $_SESSION['errors'] = [[
-        'lvl' => 'warning',
-        'msg' => '<strong>Too Low Maestro!</strong> Please enter a bid amount higher than the current bid'
-      ]];
-      header('refresh: 0');
-    } else {
-      // Clear errors
-      unset($_SESSION['errors']);
-
+    // Check the amount being entered is greater than current bid before submitting
+    // TODO: Improve error handling
+    if (processCurrency($_POST['bid_amount']) > getBidCurrentPrice($pdo, $auction['auction_id'])) {
       createBid($pdo, [
         'bid_amount' => processCurrency($_POST['bid_amount']),
         'bid_author' => $_SESSION['uuid'],
@@ -50,9 +40,6 @@ try {
       // Refresh the page so the new review shows up.
       header('location: /bids/index.php?auction=' . $auction['auction_id']);
     }
-  } else {
-    // Clear errors
-    unset($_SESSION['errors']);
   }
 
   // Start the Output Buffer

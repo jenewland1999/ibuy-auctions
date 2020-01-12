@@ -1,17 +1,4 @@
 <div class="row">
-  <div class="col-12">
-    <!-- The beginning of error checking. Quite elegant if you ask me. -->
-    <?php if (isset($_SESSION['errors'])): ?>
-      <?php foreach ($_SESSION['errors'] as $error): ?>
-        <div class="alert alert-<?= $error['lvl']; ?> alert-dismissible fade show" role="alert">
-          <?= $error['msg']; ?>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-      <?php endforeach; ?>
-    <?php endif; ?>
-  </div>
   <div class="col-md-8">
     <a href="/auctions/auction.php?id=<?= $auction['auction_id'] ?>" class="btn btn-secondary mb-5">
       <i class="fas fa-arrow-left"></i> Return to Auction
@@ -21,24 +8,28 @@
       <small class="text-muted mr-2">Bids: </small><span class="bid__stat mr-2">0</span>
       <small class="text-muted mr-2">Time Remaining: </small><span class="bid__stat mr-2"><?= getAuctionTimeRemaining($auction); ?></span>
     </p>
-    <table class="table table-striped">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">Bidder</th>
-          <th scope="col">Bid Amount</th>
-          <th scope="col">Bid Timestamp</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($bids as $bid): ?>
+    <?php if (count($bids) > 0): ?>
+      <table class="table table-striped">
+        <thead class="thead-light">
           <tr>
-            <td><?= getUserFullName(getUser($pdo, $bid['bid_author'])); ?></td>
-            <td><?= formatCurrency($bid['bid_amount'], '£'); ?></td>
-            <td><?= getFormattedDateTime($bid['bid_timestamp']); ?></td>
+            <th scope="col">Bidder</th>
+            <th scope="col">Bid Amount</th>
+            <th scope="col">Bid Timestamp</th>
           </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <?php foreach ($bids as $bid): ?>
+            <tr>
+              <td><?= getUserFullName(getUser($pdo, $bid['bid_author'])); ?></td>
+              <td><?= formatCurrency($bid['bid_amount'], '£'); ?></td>
+              <td><?= getFormattedDateTime($bid['bid_timestamp']); ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    <?php else: ?>
+      <p>Nobody has bid on this item yet. Be the first to bid.</p>
+    <?php endif; ?>
   </div>
   <div class="col-md-4">
     <ul class="list-group">
