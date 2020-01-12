@@ -55,7 +55,7 @@
       <?php if ($auction['buy_price'] != 0): ?>
         <li class="list-group-item">Buy Now Price: <?= htmlspecialchars(formatCurrency($auction['buy_price'], '£'), ENT_QUOTES, 'UTF-8'); ?></li>
       <?php endif; ?>
-      <li class="list-group-item">Current Bid: <?= htmlspecialchars(formatCurrency(getCurrentBid($auction), '£'), ENT_QUOTES, 'UTF-8'); ?></li>
+      <li class="list-group-item">Current Bid: <?= htmlspecialchars(formatCurrency(getBidCurrentPrice($pdo, $auction['auction_id']), '£'), ENT_QUOTES, 'UTF-8'); ?></li>
       <li class="list-group-item">Auction starts on <?= htmlspecialchars(getFormattedDateTime($auction['start_date']), ENT_QUOTES, 'UTF-8'); ?></li>
       <li class="list-group-item">Auction ends on <?= htmlspecialchars(getFormattedDateTime($auction['end_date']), ENT_QUOTES, 'UTF-8'); ?></li>
     </ul>

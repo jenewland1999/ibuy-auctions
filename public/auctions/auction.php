@@ -35,11 +35,6 @@ try {
   // Retrieve all the categories
   $categories = getCategories($pdo);
 
-  // Calculate time remaining (server-side code)
-  $currentTimestamp = new DateTime();
-  $endTimestamp = new DateTime($auction['end_date']);
-  $timeRemaining = $currentTimestamp->diff($endTimestamp);
-
   // Handle review submission
   if (isset($_POST['submit__review'])) {
     createReview($pdo, [

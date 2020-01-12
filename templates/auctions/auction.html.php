@@ -42,16 +42,16 @@
       <li class="list-group-item bg-transparent pl-0">Auction created by <a href="/id/profile.php?id=<?= $user['user_id'] ?>"><?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?></a></li>
       
       <!-- Current Bid -->
-      <li class="list-group-item bg-transparent pl-0 font-weight-bold" style="color:red;font-size:2rem;">Current Bid: <?= htmlspecialchars(formatCurrency(getCurrentBid(), '£'), ENT_QUOTES, 'UTF-8'); ?></li>
+      <li class="list-group-item bg-transparent pl-0 font-weight-bold" style="color:red;font-size:2rem;">Current Bid: <?= htmlspecialchars(formatCurrency(getBidCurrentPrice($pdo, $auction['auction_id']), '£'), ENT_QUOTES, 'UTF-8'); ?></li>
       
       <!-- Time Remaining (NOTE: JS Handles the countdown magic) -->
-      <li class="list-group-item bg-transparent pl-0">Time Remaining: <?= $timeRemaining->format('%m Months, %d Days, %h Hours, %i Minutes, %s Seconds') ?></li>
+      <li class="list-group-item bg-transparent pl-0">Time remaining: <?= getAuctionTimeRemaining($auction); ?></li>
     </ul>
 
     <?php if (isset($_SESSION['uuid']) && $user['user_id'] === $_SESSION['uuid']): /* If it's your auction */ ?>
       <p>You can't bid on your own auctions.</p>
     <?php elseif (isset($_SESSION['uuid'])): ?>
-      <form action="" method="post" class="form-inline">
+      <form action="" method="post" class="form-inline mb-2">
         <input type="hidden" name="auction_id" value="<?= $_GET['id']; ?>" required />
         
         <div class="form-group mr-2 flex-grow-1">
@@ -69,6 +69,8 @@
     <?php else: ?>
       <p>You must be logged in to bid on auctions. <a href="/id/login.php">Login</a></p>
     <?php endif ?>
+
+    <a href="/bids/index.php?auction=<?= $auction['auction_id'] ?>">View Bids</a>
   </div>
 </div>
 <div class="row">

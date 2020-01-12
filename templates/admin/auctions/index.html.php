@@ -49,9 +49,8 @@
               $startPrice = formatCurrency($auction['start_price'], '£');
               $buyPrice = formatCurrency($auction['buy_price'], '£');
 
-              // TODO: Implement retrieval of current bid
               // Get current bid
-              // $currentBid = formatCurrency(getCurrentBid($auction['auction_id']));
+              $currentBid = formatCurrency(getBidCurrentPrice($pdo, $auction['auction_id']));
             ?>
             <tr>
               <!-- Auction ID -->

@@ -46,6 +46,32 @@ function getUserFullName($user) {
   return htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8');
 }
 
-// Temporary function header to prevent exceptions
-// TODO: Implement and move to DatabaseFunctions()
-function getCurrentBid() {}
+// Calculate time remaining
+function getAuctionTimeRemaining($auction) {
+  $currentTimestamp = new DateTime();
+  $endTimestamp = new DateTime($auction['end_date']);
+  $timeRemaining = $currentTimestamp->diff($endTimestamp);
+
+  if ($timeRemaining->m > 0) {
+    return 'More than a month <small>(' . $endTimestamp->format('dS M') . ')</small>';
+  } else if ($timeRemaining->d > 0) {
+    return $timeRemaining->format('%dd %Hh');
+  } else if ($timeRemaining->h > 0) {
+    return $timeRemaining->format('%Hh %im %ss');
+  } else if ($timeRemaining->i > 0) {
+    return $timeRemaining->format('%im %ss');
+  } else if ($timeRemaining->s > 0) {
+    return $timeRemaining->format('%ss');
+  } else {
+    return $timeRemaining->format('%mm, %dd, %h Hours, %i Minutes, %s Seconds');
+  }
+}
+
+function getBidCurrentPrice($pdo, $auction_id) {
+  $bid = getBidCurrent($pdo, $auction_id);
+
+  if (is_array($bid))
+    return $bid['bid_amount'];
+  else
+    return $bid;
+}

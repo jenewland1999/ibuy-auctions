@@ -356,6 +356,142 @@ function updateAuction($pdo, $fields) {
   query($pdo, $sql, $fields);
 }
 
+// Bids
+// Retrieve all bids from the DB
+function getBids($pdo) {
+  $sql = '
+    SELECT  `bid_id`,
+            `bid_amount`,
+            `bid_author`,
+            `bid_timestamp`,
+            `auction_id`
+    FROM    `bids`
+  ';
+
+  return query($pdo, $sql)->fetchAll();
+}
+
+// Retrieve all bids for a particular auction from the DB
+function getBidsByAuction($pdo, $auction_id, $sort = 'ORDER BY bid_amount DESC') {
+  $sql = '
+    SELECT  `bid_id`,
+            `bid_amount`,
+            `bid_author`,
+            `bid_timestamp`,
+            `auction_id`
+    FROM    `bids`
+    WHERE   `auction_id` = :auction_id
+  ';
+
+  if ($sort !== '')
+    $sql .= $sort;
+
+  $parameters = [
+    'auction_id' => $auction_id
+  ];
+
+  return query($pdo, $sql, $parameters)->fetchAll();
+}
+
+// Retrieve the bid with the matching bid_id from the DB
+function getBid($pdo, $bid_id) {
+  $sql = '
+    SELECT  `bid_id`,
+            `bid_amount`,
+            `bid_author`,
+            `bid_timestamp`,
+            `auction_id`
+    FROM    `bids`
+    WHERE   `bid_id` = :bid_id
+  ';
+
+  $parameters = [
+    'bid_id' => $bid_id
+  ];
+
+  return query($pdo, $sql, $parameters)->fetch();
+}
+
+// Get the current (highest) bid. If no bids made return auction start_price
+function getBidCurrent($pdo, $auction_id) {
+  $auction = getAuction($pdo, $auction_id);
+  $bids = getBidsByAuction($pdo, $auction_id);
+  if ($bids === false || count($bids) === 0)
+    return $auction['start_price']; 
+  return $bids[0];
+}
+
+function deleteBid($pdo, $bid_id) {
+  $sql = '
+    DELETE FROM `bids` 
+    WHERE `bid_id` = :bid_id 
+    LIMIT 1
+  ';
+
+  $parameters = [
+    'bid_id' => $bid_id
+  ];
+
+  query($pdo, $sql, $parameters);
+}
+
+// Create a bid and add it to the DB
+function createBid($pdo, $fields) {
+  // Create the initial part of the SQL query
+  $sql = 'INSERT INTO `bids` (';
+
+  // Loop over each of the fields key values for attributes
+  foreach ($fields as $key => $value) {
+    $sql .= '`' . $key . '`,';
+  }
+
+  // Trim the trailing comma
+  $sql = rtrim($sql, ',');
+
+  // Append the next part of the SQL query
+  $sql .= ') VALUES (';
+
+  // Loop over each of the fields key values again for placeholders
+  foreach ($fields as $key => $value) {
+    $sql .= ':' . $key . ',';
+  }
+
+  // Trim the trailing comma
+  $sql = rtrim($sql, ',');
+
+  // Append the final part of the SQL query
+  $sql .= ')';
+
+  // Process any dates in the fields array
+  $fields = processDates($fields);
+
+  // Execute the query
+  query($pdo, $sql, $fields);
+}
+
+// Update a bid with the matching bid_id
+function updateBid($pdo, $fields) {
+  // Create the initial part of the SQL query
+  $sql = 'UPDATE `bids` SET ';
+
+  // Loop over each of the fields key values for attributes
+  foreach ($fields as $key => $value) {
+    $sql .= '`' . $key . '` = :' . $key . ',';
+  }
+
+  // Trim the trailing comma
+  $sql = rtrim($sql, ',');
+
+  // Append the next part of the SQL query
+  $sql .= ' WHERE `bid_id` = :bid_id';
+
+  // Process any dates in the fields array
+  $fields = processDates($fields);
+
+  // Execute the query
+  query($pdo, $sql, $fields);
+}
+
 // Categories
 // Retrieves all categories from the DB
 function getCategories($pdo) {
