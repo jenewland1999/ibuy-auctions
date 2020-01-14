@@ -50,15 +50,19 @@ try {
   }
 
   if (isset($_POST['submit__bid'])) {
-    createBid($pdo, [
-      'bid_amount' => processCurrency($_POST['bid_amount']),
-      'bid_author' => $_SESSION['uuid'],
-      'bid_timestamp' => new DateTime(),
-      'auction_id' => $auction['auction_id']
-    ]);
+    // Check the amount being entered is greater than current bid before submitting
+    // TODO: Improve error handling
+    if (processCurrency($_POST['bid_amount']) > getBidCurrentPrice($pdo, $auction['auction_id'])) {
+      createBid($pdo, [
+        'bid_amount' => processCurrency($_POST['bid_amount']),
+        'bid_author' => $_SESSION['uuid'],
+        'bid_timestamp' => new DateTime(),
+        'auction_id' => $auction['auction_id']
+      ]);
 
-    // Refresh the page so the new review shows up.
-    header('location: /auctions/auction.php?id=' . $auction['auction_id']);
+      // Refresh the page so the new review shows up.
+      header('location: /auctions/auction.php?id=' . $auction['auction_id']);
+    }
   }
 
   // Start the Output Buffer
