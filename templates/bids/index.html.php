@@ -15,6 +15,7 @@
             <th scope="col">Bidder</th>
             <th scope="col">Bid Amount</th>
             <th scope="col">Bid Timestamp</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,13 @@
               <td><?= getUserFullName(getUser($pdo, $bid['bid_author'])); ?></td>
               <td><?= formatCurrency($bid['bid_amount'], '£'); ?></td>
               <td><?= getFormattedDateTime($bid['bid_timestamp']); ?></td>
+              <td>
+                <?php if ($bid['bid_author'] === $_SESSION['uuid']): ?>
+                  <a href="/bids/delete.php?id=<?= $bid['bid_id']; ?>" class="btn btn-sm btn-danger">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                <?php endif; ?>
+              </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
