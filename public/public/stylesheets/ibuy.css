@@ -283,3 +283,31 @@ a.ibuy__btn-social-media {
 .ibuy__btn-social-media .svg-inline--fa.fa-w-10 {
   width: 1rem;
 }
+
+.auction {
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    "i n"
+    "i c"
+    "i d"
+    "i m";
+}
+.auction__images {
+  grid-area: i;
+  align-self: flex-start;
+}
+.auction__name {
+  grid-area: n;
+}
+.auction__category {
+  grid-area: c;
+}
+.auction__description {
+  grid-area: d;
+}
+.auction__more {
+  grid-area: m;
+}

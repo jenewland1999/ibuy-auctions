@@ -10,7 +10,7 @@
       <div class="carousel-inner">
         <?php for($i = 1; $i <= 5; $i++): ?>
           <figure class="carousel-item mb-0 <?= $i === 1 ? 'active' : '' ?>">
-            <img src="/uploads/images/auctions/<?= $auction['auction_id']; ?>/<?= $i ?>.jpg" alt="" class="d-block w-100" />
+            <img src="/uploads/images/auctions/1/<?= $i ?>.jpg" alt="" class="d-block w-100" />
           </figure>
         <?php endfor; ?>
       </div>
