@@ -26,7 +26,7 @@
               <td><?= getFormattedDateTime($bid['bid_timestamp']); ?></td>
               <td>
                 <?php if ($bid['bid_author'] === $_SESSION['uuid']): ?>
-                  <a href="/bids/delete.php?id=<?= $bid['bid_id']; ?>" class="btn btn-sm btn-danger">
+                  <a href="/bids/delete.php?id=<?= $bid['bid_id'] . '&from=bids'; ?>" class="btn btn-sm btn-danger">
                     <i class="fas fa-trash"></i>
                   </a>
                 <?php endif; ?>
