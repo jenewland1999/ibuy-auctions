@@ -23,8 +23,8 @@
   <!-- Main Dashboard Content -->
   <div class="col-12 col-md-6 col-lg-9">
     <!-- AUCTIONS -->
-    <section>
-      <h2 class="section__heading">My Auctions</h2>
+    <section class="mb-5">
+      <h2 class="section__heading">Auctions</h2>
       <hr class="section__rule my-3" />
       
       <!-- Auctions Listing -->
@@ -68,10 +68,6 @@
             </div>
             <h5>I reviewed <?= getUserFullName(getUser($pdo, $review['review_reviewee'])); ?> saying...</h5>
             <p class="mb-3"><?= htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?></p>
-            <?php if (strpos($_SERVER['REQUEST_URI'], 'dashboard.php') !== false): ?>
-              <a href="/reviews/update.php?id=<?= $review['review_id'] ?>" class="btn btn-sm btn-warning">Edit</a>
-              <a href="/reviews/delete.php?id=<?= $review['review_id'] ?>" class="btn btn-sm btn-danger">Delete</a>
-            <?php endif; ?>
           </li>
         <?php endforeach; ?>
       </ul>
