@@ -4,29 +4,31 @@
   <div class="col-12 col-sm-6 col-md-4">
 <?php endif; ?>
   <article class="card h-100">
-    <!-- Card Image Carousel -->
-    <section id="carousel<?= $auction['auction_id'] ?>" class="carousel slide carousel-fade" date-ride="carousel">
-      <ol class="carousel-indicators">
-        <?php for($i = 0; $i < 5; $i++): ?>
-          <li data-target="#carousel<?= $auction['auction_id'] ?>" data-slide-to="<?= $i ?>" class="<?= $i === 0 ? 'active' : '' ?>"></li>
-        <?php endfor; ?>
-      </ol>
-      <div class="carousel-inner">
-        <?php for($i = 1; $i <= 5; $i++): ?>
-          <figure class="carousel-item mb-0 <?= $i === 1 ? 'active' : '' ?>">
-            <img src="/uploads/images/auctions/<?= $auction['auction_id']; ?>/<?= $i ?>.jpg" alt="" class="d-block w-100" />
-          </figure>
-        <?php endfor; ?>
-      </div>
-      <a class="carousel-control-prev" href="#carousel<?= $auction['auction_id'] ?>" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carousel<?= $auction['auction_id'] ?>" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </section>
+    <?php if (file_exists('/uploads/auctions/' . $auction['auction_id'] . '/')): ?>
+      <!-- Card Image Carousel -->
+      <section id="carousel<?= $auction['auction_id'] ?>" class="carousel slide carousel-fade" date-ride="carousel">
+        <ol class="carousel-indicators">
+          <?php for($i = 0; $i < 5; $i++): ?>
+            <li data-target="#carousel<?= $auction['auction_id'] ?>" data-slide-to="<?= $i ?>" class="<?= $i === 0 ? 'active' : '' ?>"></li>
+          <?php endfor; ?>
+        </ol>
+        <div class="carousel-inner">
+          <?php for($i = 1; $i <= 5; $i++): ?>
+            <figure class="carousel-item mb-0 <?= $i === 1 ? 'active' : '' ?>">
+              <img src="/uploads/images/auctions/<?= $auction['auction_id']; ?>/<?= $i ?>.jpg" alt="" class="d-block w-100" />
+            </figure>
+          <?php endfor; ?>
+        </div>
+        <a class="carousel-control-prev" href="#carousel<?= $auction['auction_id'] ?>" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel<?= $auction['auction_id'] ?>" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </section>
+    <?php endif; ?>
 
     <!-- Card Body -->
     <div class="card-body">
