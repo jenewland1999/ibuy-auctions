@@ -112,7 +112,7 @@
       </div>
     </form>
 
-    <a href="/admin/categories/" class="btn btn-block btn-secondary mb-2">Return to Auctions</a>
+    <a href="/id/dashboard.php" class="btn btn-block btn-secondary mb-2">Return to Dashboard</a>
     
     <p><small class="text-muted">Once submitted the auction will have to wait for re-approval by an administrator.</small></p>
   </div>
