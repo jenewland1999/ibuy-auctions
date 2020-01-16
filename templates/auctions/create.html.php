@@ -22,7 +22,7 @@
       <!-- Auction Description -->
       <div class="form-group">
         <label for="auction_description">Auction Description</label>
-        <textarea name="auction_description" id="auction_description" class="form-control" placeholder="A brand new, unopened 1TB, Black XBOX One X complete with one black controller, HDMI/Power lead and instructions." rows="3" required></textarea>
+        <textarea name="auction_description" id="auction_description" class="form-control" placeholder="Provide a detailed and meaningful description of your auction." rows="3" required></textarea>
       </div>
 
       <!-- Auction Category -->
