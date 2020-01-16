@@ -104,6 +104,6 @@
       </div>
     </form>
 
-    <a href="/admin/categories/" class="btn btn-block btn-secondary">Return to Auctions</a>
+    <a href="/auctions/" class="btn btn-block btn-secondary">Return to Auctions</a>
   </div>
 </div>
