@@ -283,3 +283,13 @@ a.ibuy__btn-social-media {
 .ibuy__btn-social-media .svg-inline--fa.fa-w-10 {
   width: 1rem;
 }
+
+/* 
+  Ensures text sourced from user input 
+  plays nicely when printed to the document.
+*/
+.ibuy__text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+}
