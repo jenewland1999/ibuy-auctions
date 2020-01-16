@@ -31,7 +31,7 @@
         <select name="category_id" id="category_id" class="form-control" required>
           <option value="" selected disabled>Please select a category...</option>
           <?php foreach ($categories as $category): ?>
-            <option value="<?= $category['category_id']; ?>"><?= $category['category_name']; ?></option>
+            <option value="<?= $category['category_id']; ?>"><?= htmlspecialchars($category['category_name'], ENT_QUOTES, 'UTF-8'); ?></option>
           <?php endforeach; ?>
         </select>
       </div>

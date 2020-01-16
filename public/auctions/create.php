@@ -16,7 +16,7 @@ try {
 
   if (isset($_POST['submit'])) {
     // Check if a buy price was supplied and create an auction accordingly
-    if (isset($_POST['buy_price'])) {
+    if ($_POST['buy_price'] !== '') {
       // Create the auction from the form information
       createAuction($pdo, [
         'auction_name' => $_POST['auction_name'],
