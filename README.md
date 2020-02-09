@@ -29,8 +29,8 @@ To run this website I'm using a pre-built/configured virtual machine available t
 
 - Host: v.je
 - Port: 3306
-- Username: student
-- Password: student
+- Username: v.je
+- Password: v.je
 
 ---
 
