@@ -1,4 +1,4 @@
-# CSY2028 Web Programming - Assignment 01 (iBuy Auctions)
+# iBuy Auctions
 
 iBuy Auctions is a watered-down clone of the popular auction site eBay. The site is built from the ground up using PHP, MySQL, HTML, CSS and JavaScript.
 
@@ -34,4 +34,4 @@ To run this website I'm using a pre-built/configured virtual machine available t
 
 ---
 
-Copyright &copy; 2019 Jordan Newland
+Copyright &copy; 2020 Jordan Newland
