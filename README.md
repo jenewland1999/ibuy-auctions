@@ -20,8 +20,8 @@ To run this website I'm using a pre-built/configured virtual machine available t
 2. In your terminal application, navigate to an empty directory and run vagrant init `csy2028/current`
 3. Run `vagrant up`
 4. Open MySQL Workbench and create a new connection using the DB information below
-5. Create a DB Schema called `assignment` then save it and exit MySQL Workbench
-6. Back in the terminal application, navigate inside `websites` and run `git clone git@github.com:jenewland1999/csy2028_as1 ibuy/`
+5. Create a DB Schema called `ibuy` then save it and exit MySQL Workbench
+6. Back in the terminal application, navigate inside `websites` and run `git clone https://github.com/jenewland1999/ibuy-auctions.git ibuy/`
 7. Open your web browser of choice and type `https://ibuy.v.je/`
 8. Ta-da! iBuy Auctions is running.
 
